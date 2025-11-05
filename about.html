@@ -1,0 +1,182 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Users, Target, Award, TrendingUp, Lightbulb, Heart } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import MatrixEffect from "../components/effects/MatrixEffect";
+
+export default function About() {
+  const values = [
+    {
+      icon: Target,
+      title: "Our Mission",
+      description: "To empower businesses with integrated digital solutions that drive measurable growth and operational excellence."
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation First",
+      description: "We leverage cutting-edge AI and automation technologies to keep your business ahead of the curve."
+    },
+    {
+      icon: Heart,
+      title: "Client Success",
+      description: "Your success is our priority. We're committed to delivering solutions that exceed expectations."
+    },
+    {
+      icon: Award,
+      title: "Proven Excellence",
+      description: "With proven ROI of up to 773%, our track record speaks for itself."
+    }
+  ];
+
+  const stats = [
+    { value: "500+", label: "Businesses Transformed" },
+    { value: "85%", label: "Average Cost Reduction" },
+    { value: "24/7", label: "Support Available" },
+    { value: "10+", label: "Years Experience" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-white">
+      {/* Hero Section with Blue Matrix Effect */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <MatrixEffect color="#3b82f6" opacity={0.15} />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/80 to-gray-950 z-10" />
+        
+        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
+              <Users className="w-4 h-4 text-blue-400" />
+              <span className="text-sm text-blue-400">About Cloud UKO</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+              Transforming Businesses Through Technology
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              We're on a mission to make enterprise-level digital transformation accessible to businesses of all sizes
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-950 to-gray-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="py-32 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
+            <div className="space-y-6 text-lg text-gray-300 text-left">
+              <p>
+                Cloud UKO was founded with a simple yet powerful vision: to democratize access to enterprise-grade digital transformation tools. We recognized that small and medium-sized businesses were being left behind in the digital revolution, unable to afford the marketing managers, IT specialists, and automation experts that larger corporations take for granted.
+              </p>
+              <p>
+                Our platform changes that equation entirely. By leveraging cloud infrastructure, artificial intelligence, and smart automation, we've created an integrated system that delivers the capabilities of a full digital team for a fraction of the cost.
+              </p>
+              <p>
+                Today, we're proud to serve businesses across multiple industries, helping them reduce costs by up to 85% while achieving unprecedented levels of operational efficiency and growth.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-32 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Values</h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              The principles that guide everything we do
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="bg-gradient-to-br from-gray-900 to-gray-950 border-gray-800 p-8 h-full hover:border-blue-500/50 transition-all duration-300">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
+                    <value.icon className="w-7 h-7 text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{value.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-32 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Led by Experts</h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
+              Our team brings together decades of experience in cloud computing, AI, marketing automation, and business transformation
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {["Cloud Architecture", "AI & Machine Learning", "Marketing Automation", "Business Strategy", "Cybersecurity", "Data Analytics"].map((expertise, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400"
+                >
+                  {expertise}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

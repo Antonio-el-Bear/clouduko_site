@@ -1,0 +1,256 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FolderKanban, ExternalLink, TrendingUp, DollarSign, Clock } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import MatrixEffect from "../components/effects/MatrixEffect";
+
+export default function Projects() {
+  const [filter, setFilter] = useState("all");
+
+  const projects = [
+    {
+      title: "E-Commerce Platform Transformation",
+      category: "Medium Business",
+      industry: "Retail",
+      description: "Automated marketing, inventory management, and customer engagement for a growing online retailer.",
+      results: {
+        roi: "+420%",
+        savings: "R 850,000",
+        time: "3 months"
+      },
+      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&auto=format&fit=crop",
+      tags: ["Automation", "E-commerce", "CRM"]
+    },
+    {
+      title: "Professional Services Automation",
+      category: "Small Business",
+      industry: "Consulting",
+      description: "Complete digital setup including booking system, client portal, and automated invoicing for a consulting firm.",
+      results: {
+        roi: "+680%",
+        savings: "R 420,000",
+        time: "6 weeks"
+      },
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop",
+      tags: ["Automation", "Cloud IT", "Marketing"]
+    },
+    {
+      title: "Enterprise Cloud Migration",
+      category: "Enterprise",
+      industry: "Financial Services",
+      description: "Migrated legacy systems to hybrid cloud with AI-powered analytics and predictive forecasting.",
+      results: {
+        roi: "+245%",
+        savings: "R 2.1M",
+        time: "8 months"
+      },
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      tags: ["Cloud Migration", "AI", "Security"]
+    },
+    {
+      title: "Restaurant Chain Digital Hub",
+      category: "Medium Business",
+      industry: "Food & Beverage",
+      description: "Integrated online ordering, inventory tracking, and multi-location management system.",
+      results: {
+        roi: "+520%",
+        savings: "R 1.2M",
+        time: "4 months"
+      },
+      image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&auto=format&fit=crop",
+      tags: ["Integration", "Automation", "Multi-location"]
+    },
+    {
+      title: "Healthcare Practice Management",
+      category: "Small Business",
+      industry: "Healthcare",
+      description: "Patient portal, appointment scheduling, and automated reminders with HIPAA-compliant cloud storage.",
+      results: {
+        roi: "+710%",
+        savings: "R 380,000",
+        time: "2 months"
+      },
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop",
+      tags: ["Healthcare", "Compliance", "Automation"]
+    },
+    {
+      title: "SaaS Marketing Automation",
+      category: "Enterprise",
+      industry: "Technology",
+      description: "Full-funnel marketing automation with predictive lead scoring and multi-channel campaigns.",
+      results: {
+        roi: "+340%",
+        savings: "R 1.8M",
+        time: "5 months"
+      },
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      tags: ["Marketing", "AI", "Analytics"]
+    }
+  ];
+
+  const categories = ["all", "Small Business", "Medium Business", "Enterprise"];
+
+  const filteredProjects = filter === "all" 
+    ? projects 
+    : projects.filter(p => p.category === filter);
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-white">
+      {/* Hero Section with Purple Matrix Effect */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <MatrixEffect color="#8b5cf6" opacity={0.15} />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/80 to-gray-950 z-10" />
+        
+        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-6">
+              <FolderKanban className="w-4 h-4 text-purple-400" />
+              <span className="text-sm text-purple-400">Success Stories</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              Proven Results That Speak
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Real businesses, real transformations, real ROI. See how we've helped companies like yours achieve remarkable growth
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Filter Tabs */}
+      <section className="py-12 bg-gray-950 sticky top-20 z-40 border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap gap-4 justify-center">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => setFilter(category)}
+                variant={filter === category ? "default" : "outline"}
+                className={filter === category 
+                  ? "bg-gradient-to-r from-purple-500 to-pink-500" 
+                  : "border-gray-700 hover:bg-gray-800"
+                }
+              >
+                {category === "all" ? "All Projects" : category}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="py-20 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="bg-gradient-to-br from-gray-900 to-gray-950 border-gray-800 overflow-hidden hover:border-purple-500/50 transition-all duration-300 group h-full">
+                  {/* Project Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
+                    <Badge className="absolute top-4 left-4 bg-purple-500/80 backdrop-blur-sm">
+                      {project.category}
+                    </Badge>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge variant="outline" className="border-gray-700">
+                        {project.industry}
+                      </Badge>
+                    </div>
+
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6">{project.description}</p>
+
+                    {/* Results */}
+                    <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gray-800/50 rounded-lg">
+                      <div className="text-center">
+                        <TrendingUp className="w-5 h-5 text-green-400 mx-auto mb-2" />
+                        <div className="text-lg font-bold text-green-400">{project.results.roi}</div>
+                        <div className="text-xs text-gray-500">ROI</div>
+                      </div>
+                      <div className="text-center">
+                        <DollarSign className="w-5 h-5 text-blue-400 mx-auto mb-2" />
+                        <div className="text-lg font-bold text-blue-400">{project.results.savings}</div>
+                        <div className="text-xs text-gray-500">Saved</div>
+                      </div>
+                      <div className="text-center">
+                        <Clock className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+                        <div className="text-lg font-bold text-purple-400">{project.results.time}</div>
+                        <div className="text-xs text-gray-500">Timeline</div>
+                      </div>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, idx) => (
+                        <span 
+                          key={idx}
+                          className="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-purple-500/50 hover:bg-purple-500/10 group"
+                    >
+                      View Case Study
+                      <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Write Your Success Story?
+            </h2>
+            <p className="text-xl text-gray-300 mb-10">
+              Join hundreds of businesses that have transformed their operations with Cloud UKO
+            </p>
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-6 text-lg"
+            >
+              Start Your Transformation
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
