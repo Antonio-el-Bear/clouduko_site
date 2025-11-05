@@ -67,6 +67,13 @@
             font-size: 1.5rem;
         }
 
+        .logo-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            fill: currentColor;
+        }
+
         .logo-text {
             font-size: 1.5rem;
             font-weight: bold;
@@ -458,6 +465,22 @@
             background: linear-gradient(135deg, #16a34a, #15803d);
         }
 
+        .benefit-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .benefit-icon svg[fill="currentColor"] {
+            fill: currentColor;
+            stroke: none;
+        }
+
         .benefit-title {
             font-size: 1.25rem;
             font-weight: 600;
@@ -502,6 +525,13 @@
             justify-content: center;
             color: white;
             font-size: 1.5rem;
+        }
+
+        .footer-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            fill: currentColor;
         }
 
         .footer-text {
@@ -608,7 +638,11 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon">☁</div>
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                    </svg>
+                </div>
                 <div>
                     <div class="logo-text">Cloud UKO</div>
                     <span class="logo-subtext">United Knowledge Operations</span>
@@ -740,7 +774,13 @@
                                 <option value="100k-500k">R 100,000 - R 500,000</option>
                                 <option value="500k-1m">R 500,000 - R 1,000,000</option>
                                 <option value="over-1m">Over R 1,000,000</option>
+                                <option value="custom">Custom Amount</option>
                             </select>
+                        </div>
+
+                        <div class="form-group" id="customBudgetGroup" style="display: none;">
+                            <label class="form-label" for="customBudget">Enter Custom Budget Amount</label>
+                            <input type="text" id="customBudget" class="form-input" placeholder="e.g., R 75,000 or R 2,500,000">
                         </div>
 
                         <div class="form-group">
@@ -765,22 +805,40 @@
             </div>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
                     <h3 class="benefit-title">24-Hour Response</h3>
                     <p class="benefit-description">Quick response time for all inquiries and consultations</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
+                        </svg>
+                    </div>
                     <h3 class="benefit-title">Custom Solutions</h3>
                     <p class="benefit-description">Tailored strategies designed specifically for your business</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                            <polyline points="17 6 23 6 23 12"/>
+                        </svg>
+                    </div>
                     <h3 class="benefit-title">Proven Results</h3>
                     <p class="benefit-description">Track record of 400%+ ROI across all client projects</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
                     <h3 class="benefit-title">Ongoing Support</h3>
                     <p class="benefit-description">Continuous monitoring and optimization of your systems</p>
                 </div>
@@ -792,7 +850,11 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <div class="footer-logo-icon">☁</div>
+                <div class="footer-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                    </svg>
+                </div>
                 <div>
                     <div style="font-size: 1.5rem; font-weight: bold; color: white;">Cloud UKO</div>
                     <div style="font-size: 0.75rem; color: #9ca3af;">United Knowledge Operations</div>
@@ -836,6 +898,19 @@
                     packageOptions.forEach(opt => opt.classList.remove('selected'));
                     this.classList.add('selected');
                 });
+            });
+
+            // Custom budget functionality
+            const budgetSelect = document.getElementById('budget');
+            const customBudgetGroup = document.getElementById('customBudgetGroup');
+            
+            budgetSelect.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    customBudgetGroup.style.display = 'block';
+                } else {
+                    customBudgetGroup.style.display = 'none';
+                    document.getElementById('customBudget').value = '';
+                }
             });
 
             // Form submission
