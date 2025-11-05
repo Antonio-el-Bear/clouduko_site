@@ -1,229 +1,946 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Cloud, Zap, BarChart3, Shield, Cog, Sparkles, ArrowRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import MatrixEffect from "../components/effects/MatrixEffect";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Cloud UKO</title>
+    <meta name="description" content="Discover Cloud UKO's comprehensive digital transformation services including cloud infrastructure, automation, marketing, and cybersecurity.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-export default function Services() {
-  const services = [
-    {
-      icon: Cloud,
-      title: "Cloud IT Infrastructure",
-      description: "Professional cloud setup with Google Workspace or Microsoft 365, secure storage, daily backups, and enterprise-level security.",
-      features: [
-        "Multi-user access control",
-        "Device monitoring & security",
-        "Daily automated backups",
-        "24/7 system monitoring"
-      ],
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      icon: Zap,
-      title: "Smart Automation",
-      description: "Automate repetitive tasks including invoicing, bookings, email campaigns, and customer follow-ups to save 20+ hours weekly.",
-      features: [
-        "WhatsApp & email integration",
-        "Automated invoicing & payments",
-        "CRM workflow automation",
-        "Custom workflow builders"
-      ],
-      color: "from-yellow-500 to-orange-600"
-    },
-    {
-      icon: BarChart3,
-      title: "Data-Driven Marketing",
-      description: "Full-funnel marketing strategy with social ads, SEO, email campaigns, and AI-powered analytics for maximum ROI.",
-      features: [
-        "Social media management",
-        "Google Business optimization",
-        "Email marketing campaigns",
-        "Performance analytics"
-      ],
-      color: "from-pink-500 to-rose-600"
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Enterprise-grade security with encryption, compliance monitoring, and regular security audits to protect your business.",
-      features: [
-        "End-to-end encryption",
-        "Compliance monitoring",
-        "Security audits",
-        "Threat detection"
-      ],
-      color: "from-purple-500 to-violet-600"
-    },
-    {
-      icon: Cog,
-      title: "System Integration",
-      description: "Seamlessly integrate your existing tools and platforms into one unified ecosystem for maximum efficiency.",
-      features: [
-        "ERP & CRM integration",
-        "Payment gateway setup",
-        "API development",
-        "Legacy system migration"
-      ],
-      color: "from-blue-500 to-cyan-600"
-    },
-    {
-      icon: Sparkles,
-      title: "AI & Predictive Analytics",
-      description: "Leverage artificial intelligence for predictive forecasting, customer insights, and data-driven decision making.",
-      features: [
-        "Predictive analytics",
-        "Customer behavior analysis",
-        "AI-powered insights",
-        "Automated reporting"
-      ],
-      color: "from-indigo-500 to-purple-600"
-    }
-  ];
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #030712;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-  const process = [
-    {
-      step: "01",
-      title: "Discovery",
-      description: "We analyze your current operations and identify opportunities for optimization"
-    },
-    {
-      step: "02",
-      title: "Strategy",
-      description: "Create a customized digital transformation roadmap tailored to your business"
-    },
-    {
-      step: "03",
-      title: "Implementation",
-      description: "Deploy solutions with minimal disruption to your daily operations"
-    },
-    {
-      step: "04",
-      title: "Optimization",
-      description: "Continuous monitoring and improvement to maximize your ROI"
-    }
-  ];
+        /* Enhanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section with Green Matrix Effect */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <MatrixEffect color="#10b981" opacity={0.15} />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/80 to-gray-950 z-10" />
-        
-        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full mb-6">
-              <Cog className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-green-400">Our Services</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">
-              Comprehensive Digital Solutions
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              From cloud infrastructure to AI-powered analytics, we provide everything you need to transform your business
-            </p>
-          </motion.div>
-        </div>
-      </section>
+        .navbar.scrolled {
+            background: rgba(3, 7, 18, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-      {/* Services Grid */}
-      <section className="py-32 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="bg-gradient-to-br from-gray-900 to-gray-950 border-gray-800 p-8 h-full hover:border-green-500/50 transition-all duration-300 group">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                    <service.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-gray-400 mb-6">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-      {/* Process Section */}
-      <section className="py-32 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Process</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              A proven methodology for successful digital transformation
-            </p>
-          </motion.div>
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-4">
-                  {item.step}
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ef4444, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-subtext {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .get-started {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .get-started:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 70%, rgba(34, 197, 94, 0.15), transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.15), transparent 50%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.8), #030712);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            padding-top: 8rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, white, #86efac, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #9ca3af;
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .services-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .services-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #9ca3af;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            text-align: left;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(245, 158, 11, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card.cloud {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .service-card.automation {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .service-card.marketing {
+            border-color: rgba(236, 72, 153, 0.3);
+        }
+
+        .service-card.security {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card.cloud .service-icon {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .service-card.automation .service-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .service-card.marketing .service-icon {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+        }
+
+        .service-card.security .service-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-description {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: #d1d5db;
+            font-size: 0.95rem;
+        }
+
+        .service-features .check {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .service-button {
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card.cloud .service-button {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .service-card.automation .service-button {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .service-card.marketing .service-button {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+        }
+
+        .service-card.security .service-button {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .service-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 8rem 0;
+            position: relative;
+            background: linear-gradient(to bottom, #030712, rgba(34, 197, 94, 0.05), #030712);
+        }
+
+        .packages-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .packages-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .packages-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .packages-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #9ca3af;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(59, 130, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .package-card:hover::before {
+            opacity: 1;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(239, 68, 68, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-card.featured {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .package-card.enterprise {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .package-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-card .package-icon {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .package-card.featured .package-icon {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .package-card.enterprise .package-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .package-card:hover .package-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .package-name {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-upkeep {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-button {
+            width: 100%;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .package-card.featured .package-button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .package-card.enterprise .package-button {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .package-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(245, 158, 11, 0.2));
+            backdrop-filter: blur(100px);
+        }
+
+        .cta-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(3, 7, 18, 0.8);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ef4444, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer-text {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #22c55e;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-content,
+            .services-container,
+            .packages-container,
+            .cta-container {
+                padding: 0 1rem;
+            }
+            
+            .service-card,
+            .package-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☁</div>
+                <div>
+                    <div class="logo-text">Cloud UKO</div>
+                    <span class="logo-subtext">United Knowledge Operations</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-400">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="service.html" class="nav-link active">Services</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="contact.html" class="get-started">Get Started</a>
         </div>
-      </section>
+    </nav>
 
-      {/* CTA Section */}
-      <section className="py-32 bg-gray-950">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-gray-300 mb-10">
-              Let's discuss how our services can transform your business operations
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Our Services</span>
+            </div>
+
+            <h1 class="hero-title">Comprehensive Digital Solutions</h1>
+
+            <p class="hero-subtitle">
+                From cloud infrastructure to smart automation, we provide integrated services 
+                that transform your business operations and drive measurable growth.
             </p>
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-10 py-6 text-lg group"
-            >
-              Schedule Consultation
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </motion.div>
         </div>
-      </section>
-    </div>
-  );
-}
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2 class="services-title">Our Core Services</h2>
+                <p class="services-subtitle">
+                    Integrated solutions designed to streamline operations and accelerate growth
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card cloud">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title">Cloud IT Infrastructure</h3>
+                    <p class="service-description">
+                        Professional cloud setup with Google Workspace or Microsoft 365, secure storage, 
+                        daily backups, and enterprise-level security.
+                    </p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> Multi-user access control</li>
+                        <li><span class="check">✓</span> Device monitoring & security</li>
+                        <li><span class="check">✓</span> Daily automated backups</li>
+                        <li><span class="check">✓</span> 24/7 system monitoring</li>
+                    </ul>
+                    <a href="contact.html" class="service-button">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="service-card automation">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Smart Automation</h3>
+                    <p class="service-description">
+                        Automate repetitive tasks including invoicing, bookings, email campaigns, 
+                        and customer follow-ups to save 20+ hours weekly.
+                    </p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> WhatsApp & email integration</li>
+                        <li><span class="check">✓</span> Automated invoicing & payments</li>
+                        <li><span class="check">✓</span> CRM workflow automation</li>
+                        <li><span class="check">✓</span> Custom workflow builders</li>
+                    </ul>
+                    <a href="contact.html" class="service-button">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="service-card marketing">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Data-Driven Marketing</h3>
+                    <p class="service-description">
+                        Full-funnel marketing strategy with social ads, SEO, email campaigns, 
+                        and AI-powered analytics for maximum ROI.
+                    </p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> Social media management</li>
+                        <li><span class="check">✓</span> Google Business optimization</li>
+                        <li><span class="check">✓</span> Email marketing campaigns</li>
+                        <li><span class="check">✓</span> Performance analytics</li>
+                    </ul>
+                    <a href="contact.html" class="service-button">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="service-card security">
+                    <div class="service-icon">🛡️</div>
+                    <h3 class="service-title">Cybersecurity</h3>
+                    <p class="service-description">
+                        Enterprise-grade security with encryption, compliance monitoring, 
+                        and regular security audits to protect your business.
+                    </p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> SSL encryption & firewalls</li>
+                        <li><span class="check">✓</span> Regular security audits</li>
+                        <li><span class="check">✓</span> Compliance monitoring</li>
+                        <li><span class="check">✓</span> Threat detection & response</li>
+                    </ul>
+                    <a href="contact.html" class="service-button">
+                        Learn More →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <div class="packages-container">
+            <div class="packages-header">
+                <h2 class="packages-title">Service Packages</h2>
+                <p class="packages-subtitle">
+                    Choose the perfect combination of services for your business needs
+                </p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Small Business -->
+                <div class="package-card">
+                    <div class="package-icon">✨</div>
+                    <h3 class="package-name">Small Business</h3>
+                    <div class="package-price">R 23,000</div>
+                    <div class="package-upkeep">R 4,800/mo upkeep</div>
+                    <a href="contact.html" class="package-button">Get Started →</a>
+                </div>
+
+                <!-- Medium Business -->
+                <div class="package-card featured">
+                    <div class="package-icon">📈</div>
+                    <h3 class="package-name">Medium Business</h3>
+                    <div class="package-price">R 45,000</div>
+                    <div class="package-upkeep">R 11,500/mo upkeep</div>
+                    <a href="contact.html" class="package-button">Get Started →</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="package-card enterprise">
+                    <div class="package-icon">🛡️</div>
+                    <h3 class="package-name">Enterprise</h3>
+                    <div class="package-price">R 830,000</div>
+                    <div class="package-upkeep">Contact us</div>
+                    <a href="contact.html" class="package-button">Contact us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Get Started?</h2>
+            <p class="cta-description">
+                Transform your business with our comprehensive digital solutions
+            </p>
+            <a href="contact.html" class="btn btn-primary">
+                Schedule Consultation →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">☁</div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: white;">Cloud UKO</div>
+                    <div style="font-size: 0.75rem; color: #9ca3af;">United Knowledge Operations</div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="service.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <p class="footer-text">
+                © 2025 Cloud UKO. Transforming businesses through integrated digital solutions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Service card interactions
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Package card interactions
+            const packageCards = document.querySelectorAll('.package-card');
+            packageCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.03)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

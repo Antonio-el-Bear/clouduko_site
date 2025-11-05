@@ -1,256 +1,1025 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FolderKanban, ExternalLink, TrendingUp, DollarSign, Clock } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import MatrixEffect from "../components/effects/MatrixEffect";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Cloud UKO</title>
+    <meta name="description" content="Explore Cloud UKO's successful digital transformation projects and case studies showcasing proven ROI and business growth.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-export default function Projects() {
-  const [filter, setFilter] = useState("all");
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #030712;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-  const projects = [
-    {
-      title: "E-Commerce Platform Transformation",
-      category: "Medium Business",
-      industry: "Retail",
-      description: "Automated marketing, inventory management, and customer engagement for a growing online retailer.",
-      results: {
-        roi: "+420%",
-        savings: "R 850,000",
-        time: "3 months"
-      },
-      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&auto=format&fit=crop",
-      tags: ["Automation", "E-commerce", "CRM"]
-    },
-    {
-      title: "Professional Services Automation",
-      category: "Small Business",
-      industry: "Consulting",
-      description: "Complete digital setup including booking system, client portal, and automated invoicing for a consulting firm.",
-      results: {
-        roi: "+680%",
-        savings: "R 420,000",
-        time: "6 weeks"
-      },
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop",
-      tags: ["Automation", "Cloud IT", "Marketing"]
-    },
-    {
-      title: "Enterprise Cloud Migration",
-      category: "Enterprise",
-      industry: "Financial Services",
-      description: "Migrated legacy systems to hybrid cloud with AI-powered analytics and predictive forecasting.",
-      results: {
-        roi: "+245%",
-        savings: "R 2.1M",
-        time: "8 months"
-      },
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
-      tags: ["Cloud Migration", "AI", "Security"]
-    },
-    {
-      title: "Restaurant Chain Digital Hub",
-      category: "Medium Business",
-      industry: "Food & Beverage",
-      description: "Integrated online ordering, inventory tracking, and multi-location management system.",
-      results: {
-        roi: "+520%",
-        savings: "R 1.2M",
-        time: "4 months"
-      },
-      image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&auto=format&fit=crop",
-      tags: ["Integration", "Automation", "Multi-location"]
-    },
-    {
-      title: "Healthcare Practice Management",
-      category: "Small Business",
-      industry: "Healthcare",
-      description: "Patient portal, appointment scheduling, and automated reminders with HIPAA-compliant cloud storage.",
-      results: {
-        roi: "+710%",
-        savings: "R 380,000",
-        time: "2 months"
-      },
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop",
-      tags: ["Healthcare", "Compliance", "Automation"]
-    },
-    {
-      title: "SaaS Marketing Automation",
-      category: "Enterprise",
-      industry: "Technology",
-      description: "Full-funnel marketing automation with predictive lead scoring and multi-channel campaigns.",
-      results: {
-        roi: "+340%",
-        savings: "R 1.8M",
-        time: "5 months"
-      },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-      tags: ["Marketing", "AI", "Analytics"]
-    }
-  ];
+        /* Enhanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
 
-  const categories = ["all", "Small Business", "Medium Business", "Enterprise"];
+        .navbar.scrolled {
+            background: rgba(3, 7, 18, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-  const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section with Purple Matrix Effect */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <MatrixEffect color="#8b5cf6" opacity={0.15} />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/80 to-gray-950 z-10" />
-        
-        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-6">
-              <FolderKanban className="w-4 h-4 text-purple-400" />
-              <span className="text-sm text-purple-400">Success Stories</span>
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ef4444, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-subtext {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .get-started {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .get-started:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.15), transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15), transparent 50%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.8), #030712);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            padding-top: 8rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, white, #c084fc, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #9ca3af;
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Filter Section */
+        .filters {
+            padding: 3rem 0;
+            background: rgba(15, 23, 42, 0.3);
+        }
+
+        .filters-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #d1d5db;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-color: #8b5cf6;
+            color: white;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .projects-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-category {
+            background: rgba(139, 92, 246, 0.2);
+            color: #c084fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .project-industry {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.75rem;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #22c55e;
+            display: block;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-button {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            background: transparent;
+            color: #c084fc;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .project-button:hover {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border-color: #8b5cf6;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, #030712, rgba(139, 92, 246, 0.05), #030712);
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .stats-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .stat-value {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+            backdrop-filter: blur(100px);
+        }
+
+        .cta-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(3, 7, 18, 0.8);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ef4444, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer-text {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #8b5cf6;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .project-results {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-content,
+            .projects-container,
+            .cta-container {
+                padding: 0 1rem;
+            }
+            
+            .project-card {
+                min-width: unset;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☁</div>
+                <div>
+                    <div class="logo-text">Cloud UKO</div>
+                    <span class="logo-subtext">United Knowledge Operations</span>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="service.html" class="nav-link">Services</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <a href="contact.html" class="get-started">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Our Projects</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
-              Proven Results That Speak
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Real businesses, real transformations, real ROI. See how we've helped companies like yours achieve remarkable growth
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Filter Tabs */}
-      <section className="py-12 bg-gray-950 sticky top-20 z-40 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap gap-4 justify-center">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                onClick={() => setFilter(category)}
-                variant={filter === category ? "default" : "outline"}
-                className={filter === category 
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500" 
-                  : "border-gray-700 hover:bg-gray-800"
+            <h1 class="hero-title">Success Stories & Case Studies</h1>
+
+            <p class="hero-subtitle">
+                Discover how we've transformed businesses across industries with proven results, 
+                measurable ROI, and sustainable growth strategies.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filters">
+        <div class="filters-container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="small">Small Business</button>
+                <button class="filter-btn" data-filter="medium">Medium Business</button>
+                <button class="filter-btn" data-filter="enterprise">Enterprise</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="projects-container">
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="medium">
+                    <div class="project-image">
+                        🛒
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Medium Business</div>
+                        </div>
+                        <h3 class="project-title">E-Commerce Platform Transformation</h3>
+                        <div class="project-industry">Retail Industry</div>
+                        <p class="project-description">
+                            Automated marketing, inventory management, and customer engagement for a growing online retailer.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+420%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 850K</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">3 Months</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">E-commerce</span>
+                            <span class="project-tag">CRM</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-category="small">
+                    <div class="project-image">
+                        💼
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Small Business</div>
+                        </div>
+                        <h3 class="project-title">Professional Services Automation</h3>
+                        <div class="project-industry">Consulting Industry</div>
+                        <p class="project-description">
+                            Complete digital setup including booking system, client portal, and automated invoicing for a consulting firm.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+680%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 420K</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">6 Weeks</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Cloud IT</span>
+                            <span class="project-tag">Marketing</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="enterprise">
+                    <div class="project-image">
+                        🏦
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Enterprise</div>
+                        </div>
+                        <h3 class="project-title">Enterprise Cloud Migration</h3>
+                        <div class="project-industry">Financial Services</div>
+                        <p class="project-description">
+                            Migrated legacy systems to hybrid cloud with AI-powered analytics and predictive forecasting.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+245%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 2.1M</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">8 Months</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Cloud Migration</span>
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="medium">
+                    <div class="project-image">
+                        🏥
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Medium Business</div>
+                        </div>
+                        <h3 class="project-title">Healthcare Practice Digitization</h3>
+                        <div class="project-industry">Healthcare</div>
+                        <p class="project-description">
+                            Complete practice management system with patient portal, automated scheduling, and compliance monitoring.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+380%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 720K</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">4 Months</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Compliance</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-category="small">
+                    <div class="project-image">
+                        🍕
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Small Business</div>
+                        </div>
+                        <h3 class="project-title">Restaurant Chain Optimization</h3>
+                        <div class="project-industry">Food & Beverage</div>
+                        <p class="project-description">
+                            Multi-location inventory management, online ordering system, and customer loyalty program integration.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+550%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 320K</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">10 Weeks</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">POS Systems</span>
+                            <span class="project-tag">Inventory</span>
+                            <span class="project-tag">Marketing</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-category="enterprise">
+                    <div class="project-image">
+                        🏭
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">Enterprise</div>
+                        </div>
+                        <h3 class="project-title">Manufacturing Intelligence Platform</h3>
+                        <div class="project-industry">Manufacturing</div>
+                        <p class="project-description">
+                            IoT integration, predictive maintenance, and supply chain optimization for a manufacturing company.
+                        </p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-value">+320%</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">R 1.8M</span>
+                                <span class="result-label">Savings</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">12 Months</span>
+                                <span class="result-label">Timeline</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">IoT</span>
+                            <span class="project-tag">Predictive Analytics</span>
+                            <span class="project-tag">Supply Chain</span>
+                        </div>
+                        <a href="contact.html" class="project-button">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-header">
+                <h2 class="stats-title">Project Success Metrics</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">420%</div>
+                    <div class="stat-label">Average ROI</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">R 15M+</div>
+                    <div class="stat-label">Total Savings Generated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Be Our Next Success Story?</h2>
+            <p class="cta-description">
+                Join our portfolio of successful digital transformations and achieve measurable results
+            </p>
+            <a href="contact.html" class="btn btn-primary">
+                Start Your Project →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">☁</div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: white;">Cloud UKO</div>
+                    <div style="font-size: 0.75rem; color: #9ca3af;">United Knowledge Operations</div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="service.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <p class="footer-text">
+                © 2025 Cloud UKO. Transforming businesses through integrated digital solutions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
-              >
-                {category === "all" ? "All Projects" : category}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
+            });
 
-      {/* Projects Grid */}
-      <section className="py-20 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="bg-gradient-to-br from-gray-900 to-gray-950 border-gray-800 overflow-hidden hover:border-purple-500/50 transition-all duration-300 group h-full">
-                  {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
-                    <Badge className="absolute top-4 left-4 bg-purple-500/80 backdrop-blur-sm">
-                      {project.category}
-                    </Badge>
-                  </div>
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const category = card.dataset.category;
+                            if (category === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
 
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="outline" className="border-gray-700">
-                        {project.industry}
-                      </Badge>
-                    </div>
+            // Project card interactions
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px)';
+                });
 
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 mb-6">{project.description}</p>
-
-                    {/* Results */}
-                    <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gray-800/50 rounded-lg">
-                      <div className="text-center">
-                        <TrendingUp className="w-5 h-5 text-green-400 mx-auto mb-2" />
-                        <div className="text-lg font-bold text-green-400">{project.results.roi}</div>
-                        <div className="text-xs text-gray-500">ROI</div>
-                      </div>
-                      <div className="text-center">
-                        <DollarSign className="w-5 h-5 text-blue-400 mx-auto mb-2" />
-                        <div className="text-lg font-bold text-blue-400">{project.results.savings}</div>
-                        <div className="text-xs text-gray-500">Saved</div>
-                      </div>
-                      <div className="text-center">
-                        <Clock className="w-5 h-5 text-purple-400 mx-auto mb-2" />
-                        <div className="text-lg font-bold text-purple-400">{project.results.time}</div>
-                        <div className="text-xs text-gray-500">Timeline</div>
-                      </div>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, idx) => (
-                        <span 
-                          key={idx}
-                          className="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-400"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-purple-500/50 hover:bg-purple-500/10 group"
-                    >
-                      View Case Study
-                      <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-32 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Write Your Success Story?
-            </h2>
-            <p className="text-xl text-gray-300 mb-10">
-              Join hundreds of businesses that have transformed their operations with Cloud UKO
-            </p>
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-6 text-lg"
-            >
-              Start Your Transformation
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-  );
-}
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
