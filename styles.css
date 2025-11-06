@@ -199,7 +199,321 @@ body {
 
 /*
 ==========================================
-6. MOBILE MENU STYLES
+6. AI CHARACTER STYLES
+==========================================
+*/
+
+/* Get Started Container with AI Character */
+.get-started-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* 2D Animated Vintage Purple AI Character */
+.ai-character {
+    position: absolute;
+    top: -120px;
+    right: -20px;
+    transform: scale(0) translateY(20px);
+    transform-origin: bottom center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* AI Character visible state */
+.ai-character.show {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    animation: aiFloat 3s ease-in-out infinite alternate;
+}
+
+/* AI Body Container */
+.ai-body {
+    position: relative;
+    filter: drop-shadow(0 8px 16px rgba(138, 43, 226, 0.3));
+}
+
+/* AI Head - Vintage Purple Design */
+.ai-head {
+    width: 45px;
+    height: 40px;
+    background: linear-gradient(145deg, #9370DB, #663399);
+    border-radius: 50% 50% 45% 45%;
+    position: relative;
+    border: 2px solid #4B0082;
+    margin: 0 auto 5px;
+}
+
+/* AI Antenna */
+.ai-antenna {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 12px;
+    background: #4B0082;
+    border-radius: 1px;
+}
+
+.ai-antenna-tip {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #9370DB;
+    border-radius: 50%;
+    animation: antennaBlink 2s ease-in-out infinite;
+}
+
+/* AI Eyes */
+.ai-eyes {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+}
+
+.ai-eye {
+    width: 8px;
+    height: 8px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    position: relative;
+    animation: eyeBlink 4s ease-in-out infinite;
+}
+
+.ai-pupil {
+    width: 4px;
+    height: 4px;
+    background: #4B0082;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    animation: pupilMove 3s ease-in-out infinite;
+}
+
+/* AI Mouth */
+.ai-mouth {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    border: 2px solid #4B0082;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    animation: mouthTalk 2s ease-in-out infinite;
+}
+
+/* AI Torso */
+.ai-torso {
+    width: 35px;
+    height: 30px;
+    background: linear-gradient(145deg, #8A2BE2, #6A1B9A);
+    border-radius: 8px;
+    margin: 0 auto;
+    border: 2px solid #4B0082;
+    position: relative;
+}
+
+/* AI Screen */
+.ai-screen {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+    background: #2D1B69;
+    border-radius: 3px;
+    border: 1px solid #4B0082;
+}
+
+.ai-screen-line {
+    width: 14px;
+    height: 1px;
+    background: #9370DB;
+    margin: 2px auto;
+    opacity: 0.8;
+    animation: screenFlicker 1.5s ease-in-out infinite;
+}
+
+.ai-screen-line:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ai-screen-line:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* AI Arms */
+.ai-arms {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+}
+
+.ai-arm {
+    width: 15px;
+    height: 4px;
+    background: linear-gradient(145deg, #8A2BE2, #6A1B9A);
+    border-radius: 2px;
+    border: 1px solid #4B0082;
+    position: absolute;
+    top: 5px;
+}
+
+.ai-arm.left {
+    left: -8px;
+    transform: rotate(-20deg);
+    animation: armWaveLeft 2.5s ease-in-out infinite;
+}
+
+.ai-arm.right {
+    right: -8px;
+    transform: rotate(20deg);
+    animation: armWaveRight 2.5s ease-in-out infinite;
+}
+
+/* AI Speech Bubble */
+.ai-speech-bubble {
+    position: absolute;
+    top: -35px;
+    left: -60px;
+    background: #FFFFFF;
+    border: 2px solid #9370DB;
+    border-radius: 15px;
+    padding: 8px 12px;
+    width: 140px;
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+    transform: scale(0);
+    opacity: 0;
+    animation: speechBubbleShow 0.5s ease-out 1s forwards, speechBubbleFloat 2s ease-in-out 1.5s infinite alternate;
+}
+
+.ai-speech-bubble p {
+    margin: 0;
+    font-size: 11px;
+    color: #4B0082;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.speech-triangle {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #FFFFFF;
+}
+
+.speech-triangle::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #9370DB;
+}
+
+/* AI Animations */
+@keyframes aiFloat {
+    0% { transform: scale(1) translateY(0px); }
+    100% { transform: scale(1) translateY(-8px); }
+}
+
+@keyframes antennaBlink {
+    0%, 80%, 100% { background: #9370DB; box-shadow: 0 0 5px #9370DB; }
+    85%, 95% { background: #DDA0DD; box-shadow: 0 0 10px #DDA0DD; }
+}
+
+@keyframes eyeBlink {
+    0%, 90%, 100% { height: 8px; }
+    95% { height: 1px; }
+}
+
+@keyframes pupilMove {
+    0%, 100% { transform: translate(2px, 2px); }
+    25% { transform: translate(1px, 2px); }
+    50% { transform: translate(3px, 2px); }
+    75% { transform: translate(2px, 1px); }
+}
+
+@keyframes mouthTalk {
+    0%, 100% { height: 6px; }
+    50% { height: 8px; }
+}
+
+@keyframes screenFlicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes armWaveLeft {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(-35deg); }
+}
+
+@keyframes armWaveRight {
+    0%, 100% { transform: rotate(20deg); }
+    50% { transform: rotate(35deg); }
+}
+
+@keyframes speechBubbleShow {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes speechBubbleFloat {
+    0% { transform: scale(1) translateY(0px); }
+    100% { transform: scale(1) translateY(-3px); }
+}
+
+/* Responsive AI Character */
+@media (max-width: 768px) {
+    .ai-character {
+        top: -100px;
+        right: -15px;
+        transform: scale(0.8) translateY(20px);
+    }
+    
+    .ai-character.show {
+        transform: scale(0.8) translateY(0);
+    }
+    
+    .ai-speech-bubble {
+        width: 120px;
+        left: -50px;
+    }
+    
+    .ai-speech-bubble p {
+        font-size: 10px;
+    }
+}
+
+/*
+==========================================
+7. MOBILE MENU STYLES
 ==========================================
 */
 
@@ -1434,10 +1748,252 @@ body {
 
 /*
 ==========================================
+24. AI CHAT ASSISTANT - CLOUDY
+==========================================
+Floating AI chat assistant positioned in bottom-right corner.
+Features interactive animations and responsive design.
+Provides engaging user interaction with playful hover effects.
+==========================================
+*/
+
+/* Floating AI assistant button */
+#ai-head {
+    position: fixed;        /* Fixed positioning to stay in place when scrolling */
+    bottom: 40px;          /* Distance from bottom of viewport */
+    right: 40px;           /* Distance from right of viewport */
+    width: 70px;           /* Button width */
+    height: 70px;          /* Button height (creates perfect circle) */
+    border-radius: 50%;    /* Make button circular */
+    background: linear-gradient(135deg, #ef4444, #ff6a6a); /* Red gradient matching brand */
+    color: white;          /* White emoji/text color */
+    font-size: 28px;       /* Large emoji size */
+    border: none;          /* Remove default button border */
+    cursor: pointer;       /* Show pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transitions for animations */
+    box-shadow: 0 4px 18px rgba(239, 68, 68, 0.5); /* Brand-colored shadow */
+    z-index: 1000;         /* Ensure button stays above other content */
+    display: flex;         /* Flexbox for centering emoji */
+    align-items: center;   /* Vertically center emoji */
+    justify-content: center; /* Horizontally center emoji */
+}
+
+/* AI button hover effects */
+#ai-head:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 25px rgba(255, 100, 100, 0.6); /* Enhanced shadow on hover */
+}
+
+/* AI button focus state for accessibility */
+#ai-head:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.8); /* White outline for focus */
+    outline-offset: 2px;   /* Space between button and outline */
+}
+
+/* AI chat container */
+#ai-chat {
+    position: fixed;       /* Fixed positioning relative to viewport */
+    bottom: 120px;         /* Position above the AI button */
+    right: 40px;           /* Align with AI button horizontally */
+    width: 280px;          /* Chat bubble width */
+    background: rgba(15, 23, 42, 0.95); /* Dark background matching site theme */
+    color: #e5e7eb;        /* Light text color */
+    border-radius: 16px;   /* Rounded corners */
+    border: 1px solid rgba(239, 68, 68, 0.3); /* Subtle brand-colored border */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* Large shadow for depth */
+    overflow: hidden;      /* Hide overflow for clean edges */
+    animation: fadeInUp 0.4s ease; /* Smooth fade-in animation */
+    backdrop-filter: blur(20px); /* Blur effect behind chat */
+    z-index: 999;          /* Layer below AI button but above other content */
+}
+
+/* Chat bubble content container */
+.chat-bubble {
+    padding: 20px;         /* Internal padding for content */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Match site font */
+    text-align: center;    /* Center align all content */
+}
+
+/* Chat header with assistant name and role */
+.chat-header {
+    margin-bottom: 15px;   /* Space below header */
+    border-bottom: 1px solid rgba(239, 68, 68, 0.2); /* Subtle divider */
+    padding-bottom: 10px;  /* Padding above divider */
+}
+
+/* Assistant name styling */
+.assistant-name {
+    display: block;        /* Force to new line */
+    font-size: 18px;       /* Larger name text */
+    font-weight: 600;      /* Semi-bold text */
+    color: #ef4444;        /* Brand red color */
+    margin-bottom: 2px;    /* Small space below name */
+}
+
+/* Assistant role/title styling */
+.assistant-role {
+    display: block;        /* Force to new line */
+    font-size: 12px;       /* Smaller role text */
+    color: #9ca3af;        /* Muted gray color */
+    font-weight: 400;      /* Normal font weight */
+}
+
+/* Chat message container */
+.chat-message {
+    margin-bottom: 15px;   /* Space below message */
+    font-size: 14px;       /* Comfortable reading size */
+    line-height: 1.5;      /* Good line spacing */
+    color: #d1d5db;        /* Light gray text */
+}
+
+/* Chat actions container */
+.chat-actions {
+    display: flex;         /* Flexbox layout for buttons */
+    gap: 8px;             /* Space between buttons */
+    justify-content: center; /* Center buttons */
+    flex-wrap: wrap;       /* Allow wrapping on small screens */
+}
+
+/* Primary chat action button (Let's Talk!) */
+#start-chat {
+    background: linear-gradient(135deg, #ef4444, #dc2626); /* Brand gradient */
+    border: none;          /* Remove default border */
+    border-radius: 8px;    /* Rounded corners */
+    color: white;          /* White text */
+    padding: 8px 16px;     /* Comfortable padding */
+    font-size: 12px;       /* Small button text */
+    font-weight: 600;      /* Semi-bold text */
+    cursor: pointer;       /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth transitions */
+    flex: 1;              /* Expand to fill available space */
+    max-width: 100px;      /* Limit maximum width */
+}
+
+/* Primary button hover effect */
+#start-chat:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c); /* Darker gradient */
+    transform: translateY(-1px); /* Slight lift effect */
+}
+
+/* Close chat button */
+#close-chat {
+    background: transparent; /* Transparent background */
+    border: 1px solid rgba(156, 163, 175, 0.3); /* Subtle border */
+    border-radius: 8px;    /* Rounded corners */
+    color: #9ca3af;        /* Muted text color */
+    padding: 8px 16px;     /* Comfortable padding */
+    font-size: 12px;       /* Small button text */
+    cursor: pointer;       /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth transitions */
+    flex: 1;              /* Expand to fill available space */
+    max-width: 80px;       /* Limit maximum width */
+}
+
+/* Close button hover effect */
+#close-chat:hover {
+    background: rgba(156, 163, 175, 0.1); /* Light background on hover */
+    border-color: rgba(156, 163, 175, 0.5); /* More visible border */
+    color: #d1d5db;        /* Lighter text on hover */
+}
+
+/* Hidden state for chat bubble */
+.hidden {
+    display: none !important; /* Hide element completely */
+}
+
+/* Fade in animation for chat appearance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;            /* Start invisible */
+        transform: translateY(10px) scale(0.95); /* Start slightly below and smaller */
+    }
+    to {
+        opacity: 1;            /* End fully visible */
+        transform: translateY(0) scale(1); /* End at normal position and size */
+    }
+}
+
+/* Mobile responsiveness for AI chat */
+@media (max-width: 768px) {
+    /* Adjust AI button for mobile */
+    #ai-head {
+        width: 60px;          /* Smaller button on mobile */
+        height: 60px;         /* Smaller button on mobile */
+        bottom: 20px;         /* Less distance from bottom */
+        right: 20px;          /* Less distance from right */
+        font-size: 24px;      /* Smaller emoji */
+    }
+    
+    /* Adjust chat bubble for mobile */
+    #ai-chat {
+        width: 260px;         /* Narrower chat on mobile */
+        bottom: 90px;         /* Adjust position above smaller button */
+        right: 20px;          /* Align with mobile button position */
+    }
+    
+    /* Smaller chat bubble padding on mobile */
+    .chat-bubble {
+        padding: 16px;        /* Reduced padding for mobile */
+    }
+    
+    /* Stack action buttons vertically on very small screens */
+    .chat-actions {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+    
+    #start-chat,
+    #close-chat {
+        max-width: none;      /* Remove width limits on mobile */
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+    /* Further adjust AI button for very small screens */
+    #ai-head {
+        width: 50px;          /* Even smaller button */
+        height: 50px;         /* Even smaller button */
+        font-size: 20px;      /* Smaller emoji */
+        bottom: 15px;         /* Closer to edge */
+        right: 15px;          /* Closer to edge */
+    }
+    
+    /* Adjust chat bubble for very small screens */
+    #ai-chat {
+        width: calc(100vw - 40px); /* Almost full width minus margins */
+        max-width: 300px;     /* But don't exceed maximum */
+        bottom: 75px;         /* Adjust for smaller button */
+        right: 15px;          /* Align with button */
+        left: 15px;           /* Center on small screens */
+        right: auto;          /* Override right positioning */
+        margin: 0 auto;       /* Center horizontally */
+    }
+}
+
+/* Reduce motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+    #ai-head {
+        transition: none;     /* Remove transitions */
+    }
+    
+    #ai-chat {
+        animation: none;      /* Remove animations */
+    }
+    
+    @keyframes fadeInUp {
+        from, to {
+            opacity: 1;       /* No fade effect */
+            transform: none;  /* No movement */
+        }
+    }
+}
+
+/*
+==========================================
 END OF STYLESHEET
 ==========================================
 This stylesheet provides complete styling for the Cloud UKO website
-including responsive design, accessibility features, and performance
-optimizations. All animations and transitions are smooth and modern.
+including responsive design, accessibility features, performance
+optimizations, and the interactive AI chat assistant "Cloudy".
+All animations and transitions are smooth and modern.
 ==========================================
 */

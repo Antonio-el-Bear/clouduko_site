@@ -71,8 +71,51 @@ BODY SECTION - MAIN WEBSITE CONTENT
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
-            <!-- Call-to-action button -->
-            <a href="contact.html" class="get-started">Get Started</a>
+            <!-- Call-to-action button with AI popup -->
+            <div class="get-started-container">
+                <a href="contact.html" class="get-started" id="get-started-btn">Get Started</a>
+                
+                <!-- 2D Animated Vintage Purple AI Character -->
+                <div class="ai-character" id="ai-character">
+                    <div class="ai-body">
+                        <!-- AI Head with vintage design -->
+                        <div class="ai-head">
+                            <div class="ai-antenna">
+                                <div class="ai-antenna-tip"></div>
+                            </div>
+                            <!-- AI Eyes with blinking animation -->
+                            <div class="ai-eyes">
+                                <div class="ai-eye left">
+                                    <div class="ai-pupil"></div>
+                                </div>
+                                <div class="ai-eye right">
+                                    <div class="ai-pupil"></div>
+                                </div>
+                            </div>
+                            <!-- AI Mouth -->
+                            <div class="ai-mouth"></div>
+                        </div>
+                        <!-- AI Body -->
+                        <div class="ai-torso">
+                            <div class="ai-screen">
+                                <div class="ai-screen-line"></div>
+                                <div class="ai-screen-line"></div>
+                                <div class="ai-screen-line"></div>
+                            </div>
+                        </div>
+                        <!-- AI Arms -->
+                        <div class="ai-arms">
+                            <div class="ai-arm left"></div>
+                            <div class="ai-arm right"></div>
+                        </div>
+                    </div>
+                    <!-- AI Speech Bubble -->
+                    <div class="ai-speech-bubble">
+                        <p>Ready to transform your business? Let's go! 🚀</p>
+                        <div class="speech-triangle"></div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Mobile menu toggle button (hamburger) -->
             <button class="mobile-menu-toggle" id="mobile-toggle">
@@ -96,6 +139,37 @@ BODY SECTION - MAIN WEBSITE CONTENT
 
     <!--
     ==========================================
+    AI CHAT ASSISTANT - CLOUDY
+    ==========================================
+    Floating AI chat assistant positioned in bottom-right corner.
+    Features interactive hover effects and toggle functionality.
+    Provides quick access to customer support and information.
+    ==========================================
+    -->
+    <!-- Floating AI Assistant Button -->
+    <button id="ai-head" title="Chat with Cloudy - Your Digital Assistant">
+        💬
+    </button>
+
+    <!-- AI Chat Bubble Container -->
+    <div id="ai-chat" class="hidden">
+        <div class="chat-bubble">
+            <div class="chat-header">
+                <span class="assistant-name">Cloudy</span>
+                <span class="assistant-role">Digital Assistant</span>
+            </div>
+            <div class="chat-message">
+                <p>Hello there! 👋<br>I'm Cloudy, your digital assistant.<br>Ready to start your transformation?</p>
+            </div>
+            <div class="chat-actions">
+                <button id="start-chat" onclick="window.location.href='contact.html'">Let's Talk!</button>
+                <button id="close-chat">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    ==========================================
     HERO SECTION
     ==========================================
     Main landing section with company name, tagline, and call-to-action.
@@ -103,6 +177,8 @@ BODY SECTION - MAIN WEBSITE CONTENT
     Includes scroll indicator to guide users to next section.
     ==========================================
     -->
+        </div>
+
     <section class="hero">
         <!-- Hero content container -->
         <div class="hero-content">
@@ -536,6 +612,92 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     mobileMenu.classList.toggle('active');
                 });
             }
+
+            /**
+             * AI Chat Assistant Functionality
+             * Handles the floating AI chat assistant "Cloudy"
+             */
+            const aiHead = document.getElementById('ai-head');
+            const aiChat = document.getElementById('ai-chat');
+            const closeChat = document.getElementById('close-chat');
+
+            // Track movement behavior for playful interaction
+            let moveCount = 0;
+            const maxMoves = 2;
+
+            // Playful hover effect - AI button moves around before settling
+            if (aiHead) {
+                aiHead.addEventListener('mouseenter', function() {
+                    if (moveCount < maxMoves) {
+                        // Calculate random position within viewport bounds
+                        const maxX = window.innerWidth - 140;  // Account for button width + margin
+                        const maxY = window.innerHeight - 180; // Account for button height + margin
+                        const x = Math.random() * Math.max(0, maxX);
+                        const y = Math.random() * Math.max(0, maxY);
+                        
+                        // Apply transform to move button
+                        aiHead.style.transform = `translate(${x - window.innerWidth + 140}px, ${y - window.innerHeight + 180}px)`;
+                        moveCount++;
+                    }
+                });
+
+                // Handle AI chat toggle
+                aiHead.addEventListener('click', function() {
+                    aiChat.classList.toggle('hidden');
+                    aiHead.style.transform = 'none'; // Reset position after interaction
+                    moveCount = 0; // Reset move counter
+                });
+            }
+
+            // Handle chat close button
+            if (closeChat) {
+                closeChat.addEventListener('click', function() {
+                    aiChat.classList.add('hidden');
+                });
+            }
+
+            /**
+             * Get Started AI Character Animation
+             * Shows vintage purple AI character when hovering over Get Started button
+             */
+            const getStartedBtn = document.getElementById('get-started-btn');
+            const aiCharacter = document.getElementById('ai-character');
+            let aiTimeout;
+
+            if (getStartedBtn && aiCharacter) {
+                // Show AI character on hover
+                getStartedBtn.addEventListener('mouseenter', function() {
+                    aiCharacter.classList.add('show');
+                    // Auto-hide after 4 seconds
+                    aiTimeout = setTimeout(() => {
+                        aiCharacter.classList.remove('show');
+                    }, 4000);
+                });
+
+                // Hide AI character when leaving the container area
+                const getStartedContainer = document.querySelector('.get-started-container');
+                if (getStartedContainer) {
+                    getStartedContainer.addEventListener('mouseleave', function() {
+                        clearTimeout(aiTimeout);
+                        setTimeout(() => {
+                            aiCharacter.classList.remove('show');
+                        }, 500); // Small delay to allow moving to AI character
+                    });
+                }
+
+                // Keep AI visible when hovering over the AI character itself
+                aiCharacter.addEventListener('mouseenter', function() {
+                    clearTimeout(aiTimeout);
+                    aiCharacter.classList.add('show');
+                });
+
+                aiCharacter.addEventListener('mouseleave', function() {
+                    setTimeout(() => {
+                        aiCharacter.classList.remove('show');
+                    }, 500);
+                });
+            }
+        });
 
             /**
              * Navbar Scroll Effect
