@@ -226,6 +226,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding-top: 80px; /* Add padding to account for fixed navbar */
             background: radial-gradient(circle at 30% 70%, rgba(239, 68, 68, 0.15), transparent 50%),
                         radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15), transparent 50%);
         }
@@ -243,7 +244,7 @@
             z-index: 2;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 2rem 2rem 0;
             text-align: center;
             animation: fadeInUp 1s ease;
         }
@@ -1022,6 +1023,20 @@
                 display: flex;
             }
             
+            .hero {
+                padding-top: 100px; /* Extra padding for mobile */
+                min-height: calc(100vh - 20px); /* Slight height adjustment */
+            }
+            
+            .hero-content {
+                padding: 1rem 1rem 0;
+            }
+            
+            .hero-badge {
+                margin-bottom: 1.5rem;
+                padding: 0.75rem 1.5rem;
+            }
+            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1062,7 +1077,23 @@
                 padding: 0 1rem;
             }
             
-            .hero-content,
+            .hero {
+                padding-top: 120px; /* Extra padding for small screens */
+            }
+            
+            .hero-content {
+                padding: 0.5rem 1rem 0;
+            }
+            
+            .hero-badge {
+                padding: 0.5rem 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-badge-text {
+                font-size: 0.75rem;
+            }
+            
             .packages-container,
             .features-container,
             .cta-container {
