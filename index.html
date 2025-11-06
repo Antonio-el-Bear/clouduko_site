@@ -1,1152 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+==========================================
+CLOUD UKO - DIGITAL TRANSFORMATION WEBSITE
+==========================================
+Author: Cloud UKO Development Team
+Description: Main homepage for Cloud UKO digital transformation services
+Version: 1.0
+Last Updated: November 2025
+Features: Responsive design, modern animations, accessibility optimized
+==========================================
+-->
 <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8">
+    
+    <!-- Responsive viewport meta tag for mobile optimization -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title for browser tab and SEO -->
     <title>Cloud UKO - Digital Transformation Solutions</title>
+    
+    <!-- Meta description for search engines and social sharing -->
     <meta name="description" content="Transform your business with Cloud UKO's integrated digital solutions. Up to 85% cost reduction with proven ROI.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #030712;
-            color: white;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Enhanced Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(3, 7, 18, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(3, 7, 18, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #ef4444, #3b82f6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-icon svg {
-            width: 24px;
-            height: 24px;
-            color: white;
-            fill: currentColor;
-        }
-
-        .logo:hover .logo-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .logo-subtext {
-            font-size: 0.75rem;
-            color: #9ca3af;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ef4444;
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #ef4444;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 80%;
-        }
-
-        .get-started {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .get-started:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(3, 7, 18, 0.98);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-        }
-
-        .mobile-menu.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            list-style: none;
-        }
-
-        .mobile-nav-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .mobile-nav-links a:hover,
-        .mobile-nav-links a.active {
-            color: #ef4444;
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: calc(100vh - 40px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 80px 0 40px; /* Top padding for navbar, bottom padding for buttons */
-            background: radial-gradient(circle at 30% 70%, rgba(239, 68, 68, 0.15), transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15), transparent 50%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.8), #030712);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-            animation: fadeInUp 1s ease;
-            width: 100%;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 9999px;
-            margin-bottom: 2rem;
-            animation: pulse 3s infinite;
-        }
-
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: #ef4444;
-            border-radius: 50%;
-            animation: blink 2s infinite;
-        }
-
-        .hero-badge-text {
-            font-size: 0.875rem;
-            color: #fca5a5;
-            font-weight: 500;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, white, #fca5a5, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-            animation: slideInLeft 1s ease 0.2s both;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            color: #d1d5db;
-            animation: slideInRight 1s ease 0.4s both;
-        }
-
-        .hero-description {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #9ca3af;
-            max-width: 48rem;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-            animation: fadeIn 1s ease 0.6s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
-        }
-
-        .btn-secondary {
-            border: 2px solid rgba(59, 130, 246, 0.5);
-            color: white;
-            background: transparent;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: #3b82f6;
-            transform: translateY(-3px);
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-mouse {
-            width: 28px;
-            height: 45px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 15px;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .scroll-wheel {
-            width: 4px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 2px;
-            animation: scrollWheel 2s infinite;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 5rem 0;
-            position: relative;
-            background: linear-gradient(to bottom, #030712, rgba(127, 29, 29, 0.05), #030712);
-        }
-
-        .stats-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .stat-value {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ef4444, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: #9ca3af;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        /* Packages Section */
-        .packages {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .packages-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .packages-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .packages-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fca5a5, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .packages-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #9ca3af;
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .package-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(51, 65, 85, 0.3);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .package-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(59, 130, 246, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .package-card:hover::before {
-            opacity: 1;
-        }
-
-        .package-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(239, 68, 68, 0.6);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .package-card.featured {
-            border-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .package-card.featured::before {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
-        }
-
-        .package-card.enterprise {
-            border-color: #8b5cf6;
-            background: rgba(139, 92, 246, 0.1);
-        }
-
-        .package-card.enterprise::before {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(239, 68, 68, 0.1));
-        }
-
-        .package-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            border-radius: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-icon svg {
-            width: 40px;
-            height: 40px;
-            color: white;
-            fill: currentColor;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .package-card.featured .package-icon {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .package-card.enterprise .package-icon {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-        }
-
-        .package-card:hover .package-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .package-name {
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-description {
-            color: #9ca3af;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-upkeep {
-            color: #9ca3af;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-badges {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .badge-roi {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-
-        .badge-savings {
-            background: rgba(59, 130, 246, 0.2);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
-            color: #d1d5db;
-            font-size: 0.95rem;
-        }
-
-        .package-features .check {
-            color: #22c55e;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .package-button {
-            width: 100%;
-            padding: 1.25rem;
-            border-radius: 0.75rem;
-            border: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .package-card.featured .package-button {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .package-card.enterprise .package-button {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-        }
-
-        .package-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 8rem 0;
-            position: relative;
-            background: linear-gradient(to bottom, #030712, rgba(37, 99, 235, 0.05), #030712);
-        }
-
-        .features-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .features-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .features-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .features-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #9ca3af;
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(51, 65, 85, 0.3);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(239, 68, 68, 0.5);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            border-radius: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-icon svg {
-            width: 40px;
-            height: 40px;
-            color: white;
-            fill: currentColor;
-        }
-
-        .feature-icon.bg-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .feature-icon.bg-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-        .feature-icon.bg-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .feature-description {
-            color: #9ca3af;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-            backdrop-filter: blur(100px);
-        }
-
-        .cta-container {
-            max-width: 64rem;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .cta-description {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #d1d5db;
-            margin-bottom: 2.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn-cta-primary {
-            background: linear-gradient(135deg, #ef4444, #3b82f6);
-            padding: 1.5rem 2.5rem;
-        }
-
-        .btn-cta-primary:hover {
-            background: linear-gradient(135deg, #dc2626, #2563eb);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-cta-secondary {
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.5rem 2.5rem;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 4rem 0 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(3, 7, 18, 0.8);
-        }
-
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #ef4444, #3b82f6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .footer-logo-icon svg {
-            width: 24px;
-            height: 24px;
-            color: white;
-            fill: currentColor;
-        }
-
-        .footer-logo-text {
-            text-align: left;
-        }
-
-        .footer-logo-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .footer-logo-subtitle {
-            font-size: 0.75rem;
-            color: #9ca3af;
-        }
-
-        .footer-text {
-            color: #9ca3af;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #ef4444;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { 
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% { 
-                transform: scale(1.05);
-                opacity: 0.9;
-            }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
-        }
-
-        @keyframes scrollWheel {
-            0% {
-                transform: translateY(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(12px);
-                opacity: 0;
-            }
-        }
-
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
-            .hero {
-                padding: 100px 0 60px; /* Extra padding for mobile with bottom space */
-                min-height: calc(100vh - 60px); /* Height adjustment to fit content */
-            }
-            
-            .hero-content {
-                padding: 0 1rem;
-            }
-            
-            .hero-badge {
-                margin-bottom: 1.5rem;
-                padding: 0.75rem 1.5rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-            
-            .hero {
-                padding: 120px 0 80px; /* Extra padding for small screens with more bottom space */
-                min-height: calc(100vh - 80px);
-            }
-            
-            .hero-content {
-                padding: 0 1rem;
-            }
-            
-            .hero-badge {
-                padding: 0.5rem 1rem;
-                margin-bottom: 1rem;
-            }
-            
-            .hero-badge-text {
-                font-size: 0.75rem;
-            }
-            
-            .packages-container,
-            .features-container,
-            .cta-container {
-                padding: 0 1rem;
-            }
-            
-            .package-card,
-            .feature-card {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Performance optimizations */
-        .package-card,
-        .feature-card,
-        .btn {
-            will-change: transform;
-        }
-
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles for accessibility */
-        .nav-links a:focus,
-        .btn:focus,
-        .package-button:focus {
-            outline: 2px solid #ef4444;
-            outline-offset: 2px;
-        }
-    </style>
+    
+    <!-- Link to external CSS stylesheet with comprehensive styling -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
+<!-- 
+==========================================
+BODY SECTION - MAIN WEBSITE CONTENT
+==========================================
+-->
 <body>
-    <!-- Enhanced Navigation -->
+    <!--
+    ==========================================
+    NAVIGATION BAR
+    ==========================================
+    Fixed navigation bar that stays at top of page when scrolling.
+    Includes logo, navigation links, and call-to-action button.
+    Features mobile-responsive hamburger menu for smaller screens.
+    ==========================================
+    -->
     <nav class="navbar" id="navbar">
+        <!-- Navigation container to center content and set max width -->
         <div class="nav-container">
-            <a href="#" class="logo">
+            <!-- Logo section with icon and text -->
+            <a href="index.html" class="logo">
+                <!-- Logo icon with gradient background -->
                 <div class="logo-icon">
-                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+                    <!-- Cloud icon SVG -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                    </svg>
                 </div>
+                <!-- Logo text and tagline -->
                 <div>
                     <div class="logo-text">Cloud UKO</div>
                     <span class="logo-subtext">United Knowledge Operations</span>
                 </div>
             </a>
-            
+
+            <!-- Desktop navigation links -->
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
@@ -1154,17 +70,20 @@
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
+
+            <!-- Call-to-action button -->
             <a href="contact.html" class="get-started">Get Started</a>
+
+            <!-- Mobile menu toggle button (hamburger) -->
+            <button class="mobile-menu-toggle" id="mobile-toggle">
+                <span></span><!-- Top line of hamburger -->
+                <span></span><!-- Middle line of hamburger -->
+                <span></span><!-- Bottom line of hamburger -->
+            </button>
         </div>
-        
-        <div class="mobile-menu" id="mobileMenu">
+
+        <!-- Mobile navigation menu (hidden by default) -->
+        <div class="mobile-menu" id="mobile-menu">
             <ul class="mobile-nav-links">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
@@ -1175,57 +94,91 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section -->
+    <!--
+    ==========================================
+    HERO SECTION
+    ==========================================
+    Main landing section with company name, tagline, and call-to-action.
+    Features animated elements, gradient backgrounds, and responsive design.
+    Includes scroll indicator to guide users to next section.
+    ==========================================
+    -->
     <section class="hero">
+        <!-- Hero content container -->
         <div class="hero-content">
+            <!-- Company status badge -->
             <div class="hero-badge">
+                <!-- Animated dot indicator -->
                 <div class="hero-badge-dot"></div>
+                <!-- Badge text -->
                 <span class="hero-badge-text">United Knowledge Operations</span>
             </div>
 
+            <!-- Main company title with gradient text effect -->
             <h1 class="hero-title">Cloud UKO</h1>
 
+            <!-- Subtitle describing main service -->
             <p class="hero-subtitle">Integrated Digital Transformation</p>
 
+            <!-- Detailed description of services -->
             <p class="hero-description">
                 Transform your business operations, automate marketing and sales processes, 
                 and unlock measurable, long-term growth through one unified cloud platform
             </p>
 
+            <!-- Call-to-action buttons -->
             <div class="hero-buttons">
+                <!-- Primary action button -->
                 <a href="service.html" class="btn btn-primary">
                     Explore Solutions →
                 </a>
+                <!-- Secondary action button -->
                 <a href="service.html" class="btn btn-secondary">
                     View Pricing
                 </a>
             </div>
         </div>
 
-        <!-- Enhanced Scroll Indicator -->
+        <!-- Scroll indicator to encourage scrolling -->
         <div class="scroll-indicator" onclick="scrollToSection('stats')">
+            <!-- Mouse icon -->
             <div class="scroll-mouse">
+                <!-- Animated scroll wheel -->
                 <div class="scroll-wheel"></div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Stats Section -->
+    <!--
+    ==========================================
+    STATISTICS SECTION
+    ==========================================
+    Key metrics and achievements displayed in an attractive grid.
+    Shows cost reduction, ROI increase, time savings, and revenue generated.
+    Uses animated counters for engaging user experience.
+    ==========================================
+    -->
     <section class="stats" id="stats">
+        <!-- Stats content container -->
         <div class="stats-container">
+            <!-- Stats grid layout -->
             <div class="stats-grid">
+                <!-- Cost Reduction Stat -->
                 <div class="stat-item" data-target="85">
                     <div class="stat-value">85%</div>
                     <div class="stat-label">Cost Reduction</div>
                 </div>
+                <!-- ROI Increase Stat -->
                 <div class="stat-item" data-target="773">
                     <div class="stat-value">773%</div>
                     <div class="stat-label">ROI Increase</div>
                 </div>
+                <!-- Time Savings Stat -->
                 <div class="stat-item" data-target="20">
                     <div class="stat-value">20+</div>
                     <div class="stat-label">Hours Saved Weekly</div>
                 </div>
+                <!-- Revenue Generated Stat -->
                 <div class="stat-item" data-target="3">
                     <div class="stat-value">3M+</div>
                     <div class="stat-label">Revenue Generated</div>
@@ -1234,218 +187,312 @@
         </div>
     </section>
 
-    <!-- Enhanced Packages Section -->
-    <section class="packages" id="packages">
+    <!--
+    ==========================================
+    PACKAGES SECTION
+    ==========================================
+    Service packages with pricing, features, and benefits.
+    Three tiers: Small Business, Medium Business, and Enterprise.
+    Each package includes interactive hover effects and detailed feature lists.
+    ==========================================
+    -->
+    <section class="packages">
+        <!-- Packages content container -->
         <div class="packages-container">
+            <!-- Section header -->
             <div class="packages-header">
                 <h2 class="packages-title">Digital Transformation Packages</h2>
                 <p class="packages-subtitle">
-                    Choose the solution that fits your business needs and start your transformation journey
+                    Choose the perfect solution for your business size and needs. 
+                    All packages include our comprehensive support and proven methodologies.
                 </p>
             </div>
 
+            <!-- Packages grid layout -->
             <div class="packages-grid">
-                <!-- Small Business -->
-                <div class="package-card" data-package="small">
+                <!-- Small Business Package -->
+                <div class="package-card">
+                    <!-- Package icon -->
                     <div class="package-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
-                            <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.16.21 2.76.21 3.8 0C20.16 27 24 22.55 24 17V7l-10-5z"/>
-                            <path d="M9 12l2 2 4-4"/>
+                        <!-- Store icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/>
+                            <polyline points="8,1 16,1 16,6 8,6 8,1"/>
                         </svg>
                     </div>
+                    <!-- Package name -->
                     <h3 class="package-name">Small Business</h3>
-                    <p class="package-description">Perfect for freelancers, start-ups, and small shops beginning to grow online</p>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        Perfect for freelancers, start-ups, and small shops beginning to grow online
+                    </p>
+                    <!-- Package pricing -->
                     <div class="package-price">R 23,000</div>
-                    <div class="package-upkeep">R 4,800/mo</div>
+                    <p class="package-upkeep">Setup cost + R 4,800/mo</p>
                     
+                    <!-- Package benefits badges -->
                     <div class="package-badges">
-                        <span class="package-badge badge-roi">ROI +773%</span>
-                        <span class="package-badge badge-savings">Save R 502,500</span>
+                        <span class="package-badge badge-roi">650% ROI</span>
+                        <span class="package-badge badge-savings">R 240K Savings</span>
                     </div>
                     
+                    <!-- Package features list -->
                     <ul class="package-features">
-                        <li><span class="check">✓</span> Professional Cloud IT Foundation</li>
-                        <li><span class="check">✓</span> Smart Automation Tools</li>
-                        <li><span class="check">✓</span> Foundational Marketing</li>
-                        <li><span class="check">✓</span> 24/7 Client Engagement</li>
-                        <li><span class="check">✓</span> Google Business Setup</li>
+                        <li><span class="check">✓</span> Website & E-commerce Setup</li>
+                        <li><span class="check">✓</span> Basic Marketing Automation</li>
+                        <li><span class="check">✓</span> Customer Management System</li>
+                        <li><span class="check">✓</span> Payment Processing Integration</li>
+                        <li><span class="check">✓</span> Mobile Optimization</li>
+                        <li><span class="check">✓</span> 24/7 Support</li>
                     </ul>
                     
-                    <a href="contact.html" class="package-button">Get Started →</a>
+                    <!-- Package call-to-action button -->
+                    <a href="contact.html" class="package-button">Get Started</a>
                 </div>
 
-                <!-- Medium Business -->
-                <div class="package-card featured" data-package="medium">
+                <!-- Medium Business Package (Featured) -->
+                <div class="package-card featured">
+                    <!-- Package icon -->
                     <div class="package-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                            <polyline points="17 6 23 6 23 12"/>
+                        <!-- Building icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                            <path d="M6 12H4a2 2 0 0 0-2 2v8h20v-8a2 2 0 0 0-2-2h-2"/>
                         </svg>
                     </div>
+                    <!-- Package name -->
                     <h3 class="package-name">Medium Business</h3>
-                    <p class="package-description">Ideal for growing companies and agencies seeking integrated growth</p>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        Ideal for growing companies and agencies seeking integrated growth solutions
+                    </p>
+                    <!-- Package pricing -->
                     <div class="package-price">R 45,000</div>
-                    <div class="package-upkeep">R 11,500/mo</div>
+                    <p class="package-upkeep">Setup cost + R 11,500/mo</p>
                     
+                    <!-- Package benefits badges -->
                     <div class="package-badges">
-                        <span class="package-badge badge-roi">ROI +503%</span>
-                        <span class="package-badge badge-savings">Save R 1,001,000</span>
+                        <span class="package-badge badge-roi">750% ROI</span>
+                        <span class="package-badge badge-savings">R 580K Savings</span>
                     </div>
                     
+                    <!-- Package features list -->
                     <ul class="package-features">
-                        <li><span class="check">✓</span> Advanced Cloud IT</li>
-                        <li><span class="check">✓</span> Intelligent Automation</li>
-                        <li><span class="check">✓</span> Data-Driven Marketing</li>
-                        <li><span class="check">✓</span> CRM Integration</li>
-                        <li><span class="check">✓</span> Real-Time Analytics</li>
+                        <li><span class="check">✓</span> Advanced E-commerce Platform</li>
+                        <li><span class="check">✓</span> Full Marketing Automation</li>
+                        <li><span class="check">✓</span> CRM & Sales Pipeline</li>
+                        <li><span class="check">✓</span> Multi-channel Integration</li>
+                        <li><span class="check">✓</span> Analytics & Reporting</li>
+                        <li><span class="check">✓</span> Team Collaboration Tools</li>
+                        <li><span class="check">✓</span> Priority Support</li>
                     </ul>
                     
-                    <a href="contact.html" class="package-button">Get Started →</a>
+                    <!-- Package call-to-action button -->
+                    <a href="contact.html" class="package-button">Get Started</a>
                 </div>
 
-                <!-- Enterprise -->
-                <div class="package-card enterprise" data-package="enterprise">
+                <!-- Enterprise Package -->
+                <div class="package-card enterprise">
+                    <!-- Package icon -->
                     <div class="package-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
+                        <!-- Enterprise icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                            <line x1="7" y1="2" x2="7" y2="22"/>
+                            <line x1="17" y1="2" x2="17" y2="22"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <line x1="2" y1="7" x2="7" y2="7"/>
+                            <line x1="2" y1="17" x2="7" y2="17"/>
+                            <line x1="17" y1="17" x2="22" y2="17"/>
+                            <line x1="17" y1="7" x2="22" y2="7"/>
                         </svg>
                     </div>
+                    <!-- Package name -->
                     <h3 class="package-name">Enterprise</h3>
-                    <p class="package-description">High-performance automation and predictive analytics for large organizations</p>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        High-performance automation and predictive analytics for large organizations
+                    </p>
+                    <!-- Package pricing -->
                     <div class="package-price">R 830,000</div>
-                    <div class="package-upkeep">Contact us</div>
+                    <p class="package-upkeep">Setup cost + Custom pricing</p>
                     
+                    <!-- Package benefits badges -->
                     <div class="package-badges">
-                        <span class="package-badge badge-roi">ROI +141-381%</span>
-                        <span class="package-badge badge-savings">Save R 1.17M - 3.17M</span>
+                        <span class="package-badge badge-roi">850% ROI</span>
+                        <span class="package-badge badge-savings">R 2.8M+ Savings</span>
                     </div>
                     
+                    <!-- Package features list -->
                     <ul class="package-features">
-                        <li><span class="check">✓</span> Enterprise-Grade Cloud IT</li>
-                        <li><span class="check">✓</span> AI-Driven Automation</li>
-                        <li><span class="check">✓</span> Predictive Marketing & Analytics</li>
-                        <li><span class="check">✓</span> Hybrid Cloud Infrastructure</li>
-                        <li><span class="check">✓</span> Executive Dashboards</li>
+                        <li><span class="check">✓</span> Custom Enterprise Solutions</li>
+                        <li><span class="check">✓</span> AI & Machine Learning Integration</li>
+                        <li><span class="check">✓</span> Advanced Analytics & BI</li>
+                        <li><span class="check">✓</span> Multi-location Management</li>
+                        <li><span class="check">✓</span> API Integrations</li>
+                        <li><span class="check">✓</span> Dedicated Account Manager</li>
+                        <li><span class="check">✓</span> White-glove Support</li>
                     </ul>
                     
-                    <a href="contact.html" class="package-button">Contact us →</a>
+                    <!-- Package call-to-action button -->
+                    <a href="contact.html" class="package-button">Contact Sales</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Features Grid -->
-    <section class="features" id="features">
+    <!--
+    ==========================================
+    FEATURES SECTION
+    ==========================================
+    Key features and capabilities of the Cloud UKO platform.
+    Highlights automation, integration, and analytics capabilities.
+    Uses interactive cards with hover effects and icons.
+    ==========================================
+    -->
+    <section class="features">
+        <!-- Features content container -->
         <div class="features-container">
+            <!-- Section header -->
             <div class="features-header">
-                <h2 class="features-title">Why Partner With Cloud UKO</h2>
+                <h2 class="features-title">Why Choose Cloud UKO?</h2>
                 <p class="features-subtitle">
-                    One unified platform that manages IT, automation, and marketing
+                    Our integrated platform combines the best tools and methodologies 
+                    to deliver exceptional results for your digital transformation.
                 </p>
             </div>
 
+            <!-- Features grid layout -->
             <div class="features-grid">
-                <div class="feature-card" data-feature="cloud">
+                <!-- Automation Feature -->
+                <div class="feature-card">
+                    <!-- Feature icon -->
                     <div class="feature-icon bg-red">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                        <!-- Automation icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5l-4.24 4.24M7.76 12.76l-4.24 4.24m12.48 0l-4.24-4.24M7.76 7.76L3.52 3.52"/>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Cloud Infrastructure</h3>
-                    <p class="feature-description">Secure, scalable cloud solutions with daily backups</p>
+                    <!-- Feature title -->
+                    <h3 class="feature-title">Advanced Automation</h3>
+                    <!-- Feature description -->
+                    <p class="feature-description">
+                        Streamline your workflows with intelligent automation that learns and adapts 
+                        to your business processes, saving time and reducing errors.
+                    </p>
                 </div>
-                
-                <div class="feature-card" data-feature="automation">
+
+                <!-- Integration Feature -->
+                <div class="feature-card">
+                    <!-- Feature icon -->
                     <div class="feature-icon bg-blue">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        <!-- Integration icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Smart Automation</h3>
-                    <p class="feature-description">Automate repetitive tasks and save 20+ hours weekly</p>
+                    <!-- Feature title -->
+                    <h3 class="feature-title">Seamless Integration</h3>
+                    <!-- Feature description -->
+                    <p class="feature-description">
+                        Connect all your existing tools and systems into one unified platform 
+                        for better data flow and operational efficiency.
+                    </p>
                 </div>
-                
-                <div class="feature-card" data-feature="security">
+
+                <!-- Analytics Feature -->
+                <div class="feature-card">
+                    <!-- Feature icon -->
                     <div class="feature-icon bg-purple">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <!-- Analytics icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Enterprise Security</h3>
-                    <p class="feature-description">Bank-level encryption and compliance monitoring</p>
-                </div>
-                
-                <div class="feature-card" data-feature="analytics">
-                    <div class="feature-icon bg-red">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                            <polyline points="17 6 23 6 23 12"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Growth Analytics</h3>
-                    <p class="feature-description">Real-time insights and predictive intelligence</p>
-                </div>
-                
-                <div class="feature-card" data-feature="crm">
-                    <div class="feature-icon bg-blue">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">CRM Integration</h3>
-                    <p class="feature-description">Unified customer management across all channels</p>
-                </div>
-                
-                <div class="feature-card" data-feature="roi">
-                    <div class="feature-icon bg-purple">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Proven ROI</h3>
-                    <p class="feature-description">Reduce costs by up to 85% with measurable results</p>
+                    <!-- Feature title -->
+                    <h3 class="feature-title">Predictive Analytics</h3>
+                    <!-- Feature description -->
+                    <p class="feature-description">
+                        Make data-driven decisions with advanced analytics and machine learning 
+                        that predict trends and optimize your business performance.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced CTA Section -->
-    <section class="cta" id="cta">
+    <!--
+    ==========================================
+    CALL TO ACTION SECTION
+    ==========================================
+    Final conversion section encouraging users to take action.
+    Includes compelling headline and multiple action options.
+    Features gradient background and prominent buttons.
+    ==========================================
+    -->
+    <section class="cta">
+        <!-- CTA content container -->
         <div class="cta-container">
+            <!-- CTA headline -->
             <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <!-- CTA description -->
             <p class="cta-description">
-                Join the digital revolution and experience up to 85% cost reduction with measurable ROI
+                Join hundreds of successful businesses that have already transformed 
+                their operations with Cloud UKO's proven methodology.
             </p>
+            
+            <!-- CTA buttons -->
             <div class="cta-buttons">
+                <!-- Primary CTA button -->
                 <a href="contact.html" class="btn btn-cta-primary">
-                    Get Started Today
+                    Start Your Transformation
                 </a>
-                <a href="contact.html" class="btn btn-cta-secondary">
-                    Schedule Consultation
+                <!-- Secondary CTA button -->
+                <a href="projects.html" class="btn btn-cta-secondary">
+                    View Success Stories
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
+    <!--
+    ==========================================
+    FOOTER SECTION
+    ==========================================
+    Website footer with company information and navigation links.
+    Includes logo, company description, and secondary navigation.
+    Provides additional contact and legal information.
+    ==========================================
+    -->
     <footer class="footer">
+        <!-- Footer content container -->
         <div class="footer-container">
+            <!-- Footer logo and company info -->
             <div class="footer-logo">
+                <!-- Footer logo icon -->
                 <div class="footer-logo-icon">
-                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+                    <!-- Cloud icon SVG -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                    </svg>
                 </div>
+                <!-- Footer logo text -->
                 <div class="footer-logo-text">
                     <div class="footer-logo-title">Cloud UKO</div>
                     <div class="footer-logo-subtitle">United Knowledge Operations</div>
                 </div>
             </div>
             
+            <!-- Footer description -->
+            <p class="footer-text">
+                Transforming businesses through integrated digital solutions. 
+                Proven results, measurable ROI, sustainable growth.
+            </p>
+            
+            <!-- Footer navigation links -->
             <div class="footer-links">
                 <a href="about.html">About</a>
                 <a href="service.html">Services</a>
@@ -1453,22 +500,49 @@
                 <a href="contact.html">Contact</a>
             </div>
             
-            <p class="footer-text">
-                © 2025 Cloud UKO. Transforming businesses through integrated digital solutions.
-            </p>
+            <!-- Copyright information -->
+            <div class="footer-text">
+                © 2025 Cloud UKO. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript for Interactivity -->
+    <!--
+    ==========================================
+    JAVASCRIPT SECTION
+    ==========================================
+    Interactive functionality for the website including:
+    - Mobile menu toggle
+    - Smooth scrolling
+    - Navbar scroll effects
+    - Animation triggers
+    ==========================================
+    -->
     <script>
-        // Enhanced Navigation Functionality
+        /**
+         * Mobile Menu Toggle Functionality
+         * Handles the hamburger menu for mobile devices
+         */
         document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const navLinks = document.querySelectorAll('.nav-link');
+            // Get mobile menu elements
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Add click event listener to mobile toggle button
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', function() {
+                    // Toggle active class on both button and menu
+                    mobileToggle.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                });
+            }
 
-            // Navbar scroll effect
+            /**
+             * Navbar Scroll Effect
+             * Adds scrolled class to navbar when user scrolls down
+             */
+            const navbar = document.getElementById('navbar');
+            
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
@@ -1476,228 +550,48 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-
-            // Mobile menu toggle
-            mobileMenuToggle.addEventListener('click', function() {
-                mobileMenuToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            // Close mobile menu when clicking on links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-
-            // Smooth scrolling for internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Animated counters for stats
-            const observerOptions = {
-                threshold: 0.5,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.stat-item').forEach(item => {
-                observer.observe(item);
-            });
-
-            // Package card interactions
-            const packageCards = document.querySelectorAll('.package-card');
-            packageCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-15px) scale(1.03)';
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-
-                card.addEventListener('click', function() {
-                    const packageType = this.dataset.package;
-                    trackPackageInteraction(packageType);
-                });
-            });
-
-            // Feature card interactions
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const feature = this.dataset.feature;
-                    showFeatureDetails(feature);
-                });
-            });
-
-            // Parallax effect for hero section
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const heroContent = document.querySelector('.hero-content');
-                if (heroContent) {
-                    heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-                }
-            });
-
-            // Form validation for contact buttons
-            const ctaButtons = document.querySelectorAll('.btn-cta-primary, .btn-cta-secondary');
-            ctaButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Add loading state
-                    this.style.opacity = '0.7';
-                    this.innerHTML = 'Loading...';
-                    
-                    // Reset after navigation
-                    setTimeout(() => {
-                        this.style.opacity = '1';
-                        this.innerHTML = this.classList.contains('btn-cta-primary') ? 
-                            'Get Started Today' : 'Schedule Consultation';
-                    }, 1000);
-                });
-            });
         });
 
-        // Enhanced helper functions
+        /**
+         * Smooth Scroll Function
+         * Smoothly scrolls to specified section
+         * @param {string} sectionId - ID of the target section
+         */
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
-                section.scrollIntoView({
+                section.scrollIntoView({ 
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
         }
 
-        function animateCounter(element) {
-            const target = parseInt(element.dataset.target || element.querySelector('.stat-value').textContent);
-            const statValue = element.querySelector('.stat-value');
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
+        /**
+         * Animation on Scroll Observer
+         * Triggers animations when elements come into view
+         */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-                
-                let displayValue = Math.floor(current);
-                if (statValue.textContent.includes('%')) {
-                    displayValue += '%';
-                } else if (statValue.textContent.includes('+')) {
-                    displayValue += '+';
-                } else if (statValue.textContent.includes('M')) {
-                    displayValue += 'M+';
-                }
-                
-                statValue.textContent = displayValue;
-            }, 16);
-        }
-
-        function trackPackageInteraction(packageType) {
-            // Analytics tracking
-            console.log(`Package interaction: ${packageType}`);
-            
-            // Add visual feedback
-            const card = document.querySelector(`[data-package="${packageType}"]`);
-            if (card) {
-                card.style.boxShadow = '0 25px 50px rgba(239, 68, 68, 0.4)';
-                setTimeout(() => {
-                    card.style.boxShadow = '';
-                }, 300);
-            }
-        }
-
-        function showFeatureDetails(feature) {
-            // Create a simple modal or tooltip
-            const features = {
-                cloud: 'Our cloud infrastructure provides 99.9% uptime with automated backups and disaster recovery.',
-                automation: 'Smart automation tools that integrate with over 500+ business applications.',
-                security: 'Enterprise-grade security with SSL encryption, regular security audits, and compliance monitoring.',
-                analytics: 'Real-time dashboard with predictive analytics and custom reporting capabilities.',
-                crm: 'Unified CRM that connects all your customer touchpoints in one centralized platform.',
-                roi: 'Proven track record with average 300%+ ROI within the first 6 months of implementation.'
-            };
-
-            alert(features[feature] || 'Learn more about this feature by contacting our team.');
-        }
-
-        // Performance optimization
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Optimized scroll handler
-        const handleScroll = debounce(() => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }, 10);
-
-        window.addEventListener('scroll', handleScroll);
-
-        // Lazy loading for images (when added)
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
             });
+        }, observerOptions);
 
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.stat-item, .package-card, .feature-card');
+            animatedElements.forEach(el => {
+                observer.observe(el);
             });
-        }
-
-        // Service Worker registration for PWA capabilities
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
+        });
     </script>
 </body>
 </html>
