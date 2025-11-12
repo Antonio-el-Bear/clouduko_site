@@ -178,7 +178,7 @@ body {
 ==========================================
 */
 
-/* Main call-to-action button in navigation */
+/* Main call-to-action button in navigation - Desktop call button */
 .get-started {
     background: linear-gradient(135deg, #ef4444, #dc2626); /* Red gradient background */
     padding: 0.75rem 1.5rem; /* Comfortable padding */
@@ -189,6 +189,9 @@ body {
     transition: all 0.3s ease; /* Smooth animations */
     border: none;          /* Remove default button border */
     cursor: pointer;       /* Show pointer cursor */
+    display: flex;         /* Flex for icon alignment */
+    align-items: center;   /* Center items vertically */
+    white-space: nowrap;   /* Prevent text wrapping */
 }
 
 /* Get Started button hover effect */
@@ -197,323 +200,19 @@ body {
     box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3); /* Add shadow depth */
 }
 
-/*
-==========================================
-6. AI CHARACTER STYLES
-==========================================
-*/
-
-/* Get Started Container with AI Character */
-.get-started-container {
-    position: relative;
-    display: inline-block;
+/* Desktop-only visibility class */
+.desktop-only {
+    display: flex !important; /* Show on desktop */
 }
 
-/* 2D Animated Vintage Purple AI Character */
-.ai-character {
-    position: absolute;
-    top: -120px;
-    right: -20px;
-    transform: scale(0) translateY(20px);
-    transform-origin: bottom center;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    opacity: 0;
-    z-index: 1000;
-    pointer-events: none;
-}
-
-/* AI Character visible state */
-.ai-character.show {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    animation: aiFloat 3s ease-in-out infinite alternate;
-}
-
-/* AI Body Container */
-.ai-body {
-    position: relative;
-    filter: drop-shadow(0 8px 16px rgba(138, 43, 226, 0.3));
-}
-
-/* AI Head - Vintage Purple Design */
-.ai-head {
-    width: 45px;
-    height: 40px;
-    background: linear-gradient(145deg, #9370DB, #663399);
-    border-radius: 50% 50% 45% 45%;
-    position: relative;
-    border: 2px solid #4B0082;
-    margin: 0 auto 5px;
-}
-
-/* AI Antenna */
-.ai-antenna {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 12px;
-    background: #4B0082;
-    border-radius: 1px;
-}
-
-.ai-antenna-tip {
-    position: absolute;
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: #9370DB;
-    border-radius: 50%;
-    animation: antennaBlink 2s ease-in-out infinite;
-}
-
-/* AI Eyes */
-.ai-eyes {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-}
-
-.ai-eye {
-    width: 8px;
-    height: 8px;
-    background: #FFFFFF;
-    border-radius: 50%;
-    position: relative;
-    animation: eyeBlink 4s ease-in-out infinite;
-}
-
-.ai-pupil {
-    width: 4px;
-    height: 4px;
-    background: #4B0082;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    animation: pupilMove 3s ease-in-out infinite;
-}
-
-/* AI Mouth */
-.ai-mouth {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 6px;
-    border: 2px solid #4B0082;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    animation: mouthTalk 2s ease-in-out infinite;
-}
-
-/* AI Torso */
-.ai-torso {
-    width: 35px;
-    height: 30px;
-    background: linear-gradient(145deg, #8A2BE2, #6A1B9A);
-    border-radius: 8px;
-    margin: 0 auto;
-    border: 2px solid #4B0082;
-    position: relative;
-}
-
-/* AI Screen */
-.ai-screen {
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 15px;
-    background: #2D1B69;
-    border-radius: 3px;
-    border: 1px solid #4B0082;
-}
-
-.ai-screen-line {
-    width: 14px;
-    height: 1px;
-    background: #9370DB;
-    margin: 2px auto;
-    opacity: 0.8;
-    animation: screenFlicker 1.5s ease-in-out infinite;
-}
-
-.ai-screen-line:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.ai-screen-line:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-/* AI Arms */
-.ai-arms {
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-}
-
-.ai-arm {
-    width: 15px;
-    height: 4px;
-    background: linear-gradient(145deg, #8A2BE2, #6A1B9A);
-    border-radius: 2px;
-    border: 1px solid #4B0082;
-    position: absolute;
-    top: 5px;
-}
-
-.ai-arm.left {
-    left: -8px;
-    transform: rotate(-20deg);
-    animation: armWaveLeft 2.5s ease-in-out infinite;
-}
-
-.ai-arm.right {
-    right: -8px;
-    transform: rotate(20deg);
-    animation: armWaveRight 2.5s ease-in-out infinite;
-}
-
-/* AI Speech Bubble */
-.ai-speech-bubble {
-    position: absolute;
-    top: -35px;
-    left: -60px;
-    background: #FFFFFF;
-    border: 2px solid #9370DB;
-    border-radius: 15px;
-    padding: 8px 12px;
-    width: 140px;
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
-    transform: scale(0);
-    opacity: 0;
-    animation: speechBubbleShow 0.5s ease-out 1s forwards, speechBubbleFloat 2s ease-in-out 1.5s infinite alternate;
-}
-
-.ai-speech-bubble p {
-    margin: 0;
-    font-size: 11px;
-    color: #4B0082;
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.3;
-}
-
-.speech-triangle {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #FFFFFF;
-}
-
-.speech-triangle::before {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #9370DB;
-}
-
-/* AI Animations */
-@keyframes aiFloat {
-    0% { transform: scale(1) translateY(0px); }
-    100% { transform: scale(1) translateY(-8px); }
-}
-
-@keyframes antennaBlink {
-    0%, 80%, 100% { background: #9370DB; box-shadow: 0 0 5px #9370DB; }
-    85%, 95% { background: #DDA0DD; box-shadow: 0 0 10px #DDA0DD; }
-}
-
-@keyframes eyeBlink {
-    0%, 90%, 100% { height: 8px; }
-    95% { height: 1px; }
-}
-
-@keyframes pupilMove {
-    0%, 100% { transform: translate(2px, 2px); }
-    25% { transform: translate(1px, 2px); }
-    50% { transform: translate(3px, 2px); }
-    75% { transform: translate(2px, 1px); }
-}
-
-@keyframes mouthTalk {
-    0%, 100% { height: 6px; }
-    50% { height: 8px; }
-}
-
-@keyframes screenFlicker {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.4; }
-}
-
-@keyframes armWaveLeft {
-    0%, 100% { transform: rotate(-20deg); }
-    50% { transform: rotate(-35deg); }
-}
-
-@keyframes armWaveRight {
-    0%, 100% { transform: rotate(20deg); }
-    50% { transform: rotate(35deg); }
-}
-
-@keyframes speechBubbleShow {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes speechBubbleFloat {
-    0% { transform: scale(1) translateY(0px); }
-    100% { transform: scale(1) translateY(-3px); }
-}
-
-/* Responsive AI Character */
-@media (max-width: 768px) {
-    .ai-character {
-        top: -100px;
-        right: -15px;
-        transform: scale(0.8) translateY(20px);
-    }
-    
-    .ai-character.show {
-        transform: scale(0.8) translateY(0);
-    }
-    
-    .ai-speech-bubble {
-        width: 120px;
-        left: -50px;
-    }
-    
-    .ai-speech-bubble p {
-        font-size: 10px;
-    }
+/* Mobile-only visibility class */
+.mobile-only {
+    display: none !important; /* Hide on desktop */
 }
 
 /*
 ==========================================
-7. MOBILE MENU STYLES
+6. MOBILE MENU STYLES
 ==========================================
 */
 
@@ -1490,6 +1189,43 @@ body {
     color: #ef4444;     /* Brand red on hover */
 }
 
+/* Footer call button - Mobile only */
+.footer-call-btn {
+    display: none;          /* Hidden by default (desktop) */
+    background: linear-gradient(135deg, #ef4444, #dc2626); /* Red gradient */
+    padding: 1rem 2rem;     /* Comfortable padding */
+    border-radius: 0.75rem; /* Rounded corners */
+    text-decoration: none;  /* Remove underline */
+    color: white;           /* White text */
+    font-weight: 600;       /* Semi-bold font */
+    font-size: 1rem;        /* Normal text size */
+    transition: all 0.3s ease; /* Smooth animations */
+    align-items: center;    /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 0.5rem;            /* Space between icon and text */
+    margin: 2rem auto;      /* Center horizontally with top margin */
+    max-width: 280px;       /* Limit button width */
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); /* Soft shadow */
+}
+
+/* Footer call button icon */
+.footer-call-btn svg {
+    width: 20px;            /* Icon width */
+    height: 20px;           /* Icon height */
+    stroke-width: 2;        /* Icon line thickness */
+}
+
+/* Footer call button hover effect */
+.footer-call-btn:hover {
+    transform: translateY(-2px); /* Lift button slightly */
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4); /* Enhanced shadow */
+}
+
+/* Footer call button active state */
+.footer-call-btn:active {
+    transform: translateY(0); /* Reset position */
+}
+
 /*
 ==========================================
 21. ANIMATIONS AND KEYFRAMES
@@ -1609,6 +1345,16 @@ body {
         display: none;
     }
     
+    /* Hide desktop call button on mobile */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    /* Show mobile-only elements */
+    .mobile-only {
+        display: flex !important;
+    }
+    
     /* Show mobile menu toggle */
     .mobile-menu-toggle {
         display: flex;
@@ -1670,6 +1416,53 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 1rem;
+    }
+    
+    /* Improve touch targets for mobile */
+    .nav-link,
+    .mobile-nav-links a {
+        padding: 1rem;
+        font-size: 1rem;
+        min-height: 44px; /* Minimum touch target size */
+    }
+    
+    /* Better mobile menu spacing */
+    .mobile-nav-links {
+        padding: 1rem 0;
+    }
+    
+    /* Mobile friendly buttons */
+    .btn,
+    .package-button,
+    .footer-call-btn {
+        min-height: 48px; /* Comfortable touch target */
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    /* Improve readability on mobile */
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Better spacing for package cards */
+    .package-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    /* Larger text for stats on mobile */
+    .stat-value {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
     }
 }
 
@@ -1748,62 +1541,134 @@ body {
 
 /*
 ==========================================
-24. AI CHAT ASSISTANT - CLOUDY
+24. WHATSAPP CONTACT BUTTON
 ==========================================
-Floating AI chat assistant positioned in bottom-right corner.
-Features interactive animations and responsive design.
-Provides engaging user interaction with playful hover effects.
+Floating WhatsApp button positioned in bottom-right corner.
+Provides direct contact via WhatsApp for instant communication.
+Features smooth animations and responsive design.
 ==========================================
 */
 
-/* Floating AI assistant button */
-#ai-head {
+/* Floating WhatsApp button */
+#whatsapp-btn {
     position: fixed;        /* Fixed positioning to stay in place when scrolling */
     bottom: 40px;          /* Distance from bottom of viewport */
     right: 40px;           /* Distance from right of viewport */
     width: 70px;           /* Button width */
-    height: 70px;          /* Button height (creates perfect circle) */
-    border-radius: 50%;    /* Make button circular */
-    background: linear-gradient(135deg, #ef4444, #ff6a6a); /* Red gradient matching brand */
-    color: white;          /* White emoji/text color */
-    font-size: 28px;       /* Large emoji size */
-    border: none;          /* Remove default button border */
-    cursor: pointer;       /* Show pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transitions for animations */
-    box-shadow: 0 4px 18px rgba(239, 68, 68, 0.5); /* Brand-colored shadow */
-    z-index: 1000;         /* Ensure button stays above other content */
-    display: flex;         /* Flexbox for centering emoji */
-    align-items: center;   /* Vertically center emoji */
-    justify-content: center; /* Horizontally center emoji */
+    height: 70px;          /* Button height */
+    background: #25D366;   /* WhatsApp green color */
+    border-radius: 50%;    /* Circular button */
+    color: white;          /* White icon color */
+    text-decoration: none; /* Remove link underline */
+    cursor: pointer;       /* Pointer cursor on hover */
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3); /* Soft green shadow */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
+    z-index: 1000;         /* High z-index to appear above other content */
+    display: flex;         /* Flex container for centering */
+    align-items: center;   /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    user-select: none;     /* Prevent text selection */
+    backdrop-filter: blur(10px); /* Subtle blur effect */
+    flex-direction: column; /* Stack icon and text vertically */
+    gap: 4px;              /* Small gap between icon and text */
 }
 
-/* AI button hover effects */
-#ai-head:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 25px rgba(255, 100, 100, 0.6); /* Enhanced shadow on hover */
+/* WhatsApp icon styling */
+#whatsapp-btn svg {
+    width: 32px;           /* Icon width */
+    height: 32px;          /* Icon height */
+    fill: currentColor;    /* Use button's text color */
 }
 
-/* AI button focus state for accessibility */
-#ai-head:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.8); /* White outline for focus */
-    outline-offset: 2px;   /* Space between button and outline */
+/* WhatsApp text label */
+.whatsapp-text {
+    font-size: 10px;       /* Small text size */
+    font-weight: 600;      /* Semi-bold text */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    line-height: 1;        /* Tight line height */
 }
 
-/* AI chat container */
-#ai-chat {
-    position: fixed;       /* Fixed positioning relative to viewport */
-    bottom: 120px;         /* Position above the AI button */
-    right: 40px;           /* Align with AI button horizontally */
-    width: 280px;          /* Chat bubble width */
-    background: rgba(15, 23, 42, 0.95); /* Dark background matching site theme */
-    color: #e5e7eb;        /* Light text color */
-    border-radius: 16px;   /* Rounded corners */
-    border: 1px solid rgba(239, 68, 68, 0.3); /* Subtle brand-colored border */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* Large shadow for depth */
-    overflow: hidden;      /* Hide overflow for clean edges */
-    animation: fadeInUp 0.4s ease; /* Smooth fade-in animation */
-    backdrop-filter: blur(20px); /* Blur effect behind chat */
-    z-index: 999;          /* Layer below AI button but above other content */
+/* Hover effect for WhatsApp button */
+#whatsapp-btn:hover {
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4); /* Enhanced shadow */
+    background: #1ebe57;   /* Slightly darker green */
+}
+
+/* Active/clicked state for WhatsApp button */
+#whatsapp-btn:active {
+    transform: scale(0.95); /* Slightly smaller when clicked */
+}
+
+/* Pulse animation for attention */
+@keyframes whatsappPulse {
+    0% {
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
+    }
+    100% {
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+    }
+}
+
+/* Apply pulse animation periodically */
+#whatsapp-btn {
+    animation: whatsappPulse 3s ease-in-out infinite;
+}
+
+/* Mobile responsiveness for WhatsApp button */
+@media (max-width: 768px) {
+    /* Adjust WhatsApp button for mobile */
+    #whatsapp-btn {
+        width: 60px;          /* Smaller button on mobile */
+        height: 60px;         /* Smaller button on mobile */
+        bottom: 20px;         /* Less distance from bottom */
+        right: 20px;          /* Less distance from right */
+    }
+    
+    /* Smaller icon on mobile */
+    #whatsapp-btn svg {
+        width: 28px;          /* Smaller icon */
+        height: 28px;         /* Smaller icon */
+    }
+    
+    /* Smaller text on mobile */
+    .whatsapp-text {
+        font-size: 9px;       /* Even smaller text */
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+    /* Further adjust WhatsApp button for very small screens */
+    #whatsapp-btn {
+        width: 50px;          /* Even smaller button */
+        height: 50px;         /* Even smaller button */
+        bottom: 15px;         /* Closer to edge */
+        right: 15px;          /* Closer to edge */
+    }
+    
+    /* Even smaller icon on very small screens */
+    #whatsapp-btn svg {
+        width: 24px;          /* Even smaller icon */
+        height: 24px;         /* Even smaller icon */
+    }
+    
+    /* Hide text on very small screens */
+    .whatsapp-text {
+        display: none;        /* Hide text to save space */
+    }
+}
+
+/* Reduce motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+    #whatsapp-btn {
+        animation: none;      /* Remove pulse animation */
+        transition: none;     /* Remove transitions */
+    }
 }
 
 /* Chat bubble content container */
