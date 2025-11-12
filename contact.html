@@ -879,6 +879,46 @@
             const packageOptions = document.querySelectorAll('.package-option');
             const successMessage = document.getElementById('successMessage');
 
+            // Pre-select package from URL parameter or sessionStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageParam = urlParams.get('package');
+            const storedPackage = sessionStorage.getItem('selectedPackage');
+            
+            if (packageParam || storedPackage) {
+                let targetPackage = packageParam;
+                
+                // Map URL parameters to data-package values
+                const packageMap = {
+                    'small': 'small',
+                    'medium': 'medium',
+                    'enterprise': 'enterprise'
+                };
+                
+                if (packageParam && packageMap[packageParam]) {
+                    targetPackage = packageMap[packageParam];
+                } else if (storedPackage) {
+                    // Map stored package names to data-package values
+                    const storedPackageMap = {
+                        'Small Business': 'small',
+                        'Medium Business': 'medium',
+                        'Enterprise': 'enterprise'
+                    };
+                    targetPackage = storedPackageMap[storedPackage] || null;
+                }
+                
+                // Select the matching package option
+                if (targetPackage) {
+                    packageOptions.forEach(option => {
+                        if (option.dataset.package === targetPackage) {
+                            option.classList.add('selected');
+                        }
+                    });
+                }
+                
+                // Clear sessionStorage after using it
+                sessionStorage.removeItem('selectedPackage');
+            }
+
             // Navbar scroll effect
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -887,6 +927,19 @@
                     navbar.classList.remove('scrolled');
                 }
             });
+
+            // Check URL parameters for package selection
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageParam = urlParams.get('package');
+            
+            if (packageParam) {
+                // Find and select the matching package option
+                packageOptions.forEach(option => {
+                    if (option.dataset.package === packageParam) {
+                        option.classList.add('selected');
+                    }
+                });
+            }
 
             // Package selection
             packageOptions.forEach(option => {

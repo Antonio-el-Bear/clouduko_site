@@ -274,7 +274,7 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     </ul>
                     
                     <!-- Package call-to-action button -->
-                    <a href="contact.html" class="package-button">Get Started</a>
+                    <a href="contact.html?package=small" class="package-button" onclick="selectPackage('Small Business')">Get Started</a>
                 </div>
 
                 <!-- Medium Business Package (Featured) -->
@@ -315,7 +315,7 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     </ul>
                     
                     <!-- Package call-to-action button -->
-                    <a href="contact.html" class="package-button">Get Started</a>
+                    <a href="contact.html?package=medium" class="package-button" onclick="selectPackage('Medium Business')">Get Started</a>
                 </div>
 
                 <!-- Enterprise Package -->
@@ -362,7 +362,7 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     </ul>
                     
                     <!-- Package call-to-action button -->
-                    <a href="contact.html" class="package-button">Contact Sales</a>
+                    <a href="contact.html?package=enterprise" class="package-button" onclick="selectPackage('Enterprise')">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -618,6 +618,16 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     block: 'start'
                 });
             }
+        }
+
+        /**
+         * Package Selection Function
+         * Stores selected package in session storage for contact page
+         * @param {string} packageName - Name of the selected package
+         */
+        function selectPackage(packageName) {
+            // Store the selected package in sessionStorage
+            sessionStorage.setItem('selectedPackage', packageName);
         }
 
         /**
