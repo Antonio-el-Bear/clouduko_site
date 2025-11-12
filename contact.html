@@ -928,19 +928,6 @@
                 }
             });
 
-            // Check URL parameters for package selection
-            const urlParams = new URLSearchParams(window.location.search);
-            const packageParam = urlParams.get('package');
-            
-            if (packageParam) {
-                // Find and select the matching package option
-                packageOptions.forEach(option => {
-                    if (option.dataset.package === packageParam) {
-                        option.classList.add('selected');
-                    }
-                });
-            }
-
             // Package selection
             packageOptions.forEach(option => {
                 option.addEventListener('click', function() {
