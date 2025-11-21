@@ -43,6 +43,7 @@ body {
     top: 0;                 /* Align to very top of viewport */
     width: 100%;            /* Full width across screen */
     background: rgba(3, 7, 18, 0.95); /* Semi-transparent dark background */
+    -webkit-backdrop-filter: blur(20px); /* Safari support */
     backdrop-filter: blur(20px); /* Modern blur effect behind navbar */
     z-index: 1000;          /* Ensure navbar stays above other content */
     padding: 1rem 0;        /* Vertical padding for navbar height */
@@ -259,6 +260,7 @@ body {
     left: 0;             /* Align to left edge */
     right: 0;            /* Align to right edge */
     background: rgba(3, 7, 18, 0.98); /* Dark background */
+    -webkit-backdrop-filter: blur(20px); /* Safari support */
     backdrop-filter: blur(20px); /* Blur effect */
     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle top border */
     padding: 2rem;       /* Padding for content */
@@ -1028,6 +1030,7 @@ body {
     inset: 0;          /* Cover entire section */
     /* Multi-color gradient background */
     background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    -webkit-backdrop-filter: blur(100px); /* Safari support */
     backdrop-filter: blur(100px); /* Blur effect */
 }
 
@@ -1567,7 +1570,9 @@ Features smooth animations and responsive design.
     display: flex;         /* Flex container for centering */
     align-items: center;   /* Center content vertically */
     justify-content: center; /* Center content horizontally */
+    -webkit-user-select: none; /* Safari support */
     user-select: none;     /* Prevent text selection */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     backdrop-filter: blur(10px); /* Subtle blur effect */
     flex-direction: column; /* Stack icon and text vertically */
     gap: 4px;              /* Small gap between icon and text */
@@ -1850,6 +1855,71 @@ Features smooth animations and responsive design.
             transform: none;  /* No movement */
         }
     }
+}
+
+/*
+==========================================
+UTILITY CLASSES
+==========================================
+*/
+
+/* Logo image styling */
+.logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-img-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Icon styling for navigation */
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+/* Project image styling */
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* Button container with flex layout */
+.button-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.button-flex {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* Text styling utilities */
+.text-logo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.text-logo-subtitle {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* Hidden by default utility */
+.hidden {
+    display: none;
 }
 
 /*

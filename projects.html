@@ -26,6 +26,7 @@
             top: 0;
             width: 100%;
             background: rgba(3, 7, 18, 0.95);
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
@@ -504,6 +505,7 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+            -webkit-backdrop-filter: blur(100px);
             backdrop-filter: blur(100px);
         }
 
@@ -671,7 +673,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img">
                 </div>
                 <div>
                     <div class="logo-text">Cloud UKO</div>
@@ -726,14 +728,12 @@
                 <!-- E-Commerce Platform Transformation -->
                 <div class="project-card" data-category="enterprise">
                     <div class="project-image">
-                        <img src="img/companies/luvishbytes.jpg" alt="LuvishBytes E-Commerce Platform" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/luvishbytes.jpg" alt="LuvishBytes E-Commerce Platform" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Enterprise</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                            </div>
                         </div>
                         <h3 class="project-title">E-Commerce Platform Transformation</h3>
                         <div class="project-industry">LuvishBytes - Digital Commerce</div>
@@ -760,11 +760,11 @@
                             <span class="project-tag">Cloud Platform</span>
                             <span class="project-tag">Analytics</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="https://ultimatetutoring.co.za/" target="_blank" rel="noopener noreferrer" class="project-button" style="flex: 1; min-width: 140px;">Visit Website →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="https://ultimatetutoring.co.za/" target="_blank" rel="noopener noreferrer" class="project-button button-flex">Visit Website →</a>
+                            <button class="project-button read-more-btn button-flex" onclick="toggleReadMore(this)">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details hidden">
                             <h4>Project Overview</h4>
                             <p>LuvishBytes approached Cloud UKO to transform their traditional e-commerce operations into a fully automated, data-driven platform. The challenge involved integrating multiple systems, optimizing customer experience, and implementing advanced analytics.</p>
                             
@@ -788,13 +788,13 @@
                 <!-- Project 1 -->
                 <div class="project-card" data-category="medium">
                     <div class="project-image">
-                        <img src="img/companies/ultimate-tutor.jpg" alt="Ultimate Tutor E-Commerce Platform" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/ultimate-tutor.jpg" alt="Ultimate Tutor E-Commerce Platform" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Medium Business</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">E-Commerce Platform Transformation</h3>
@@ -828,13 +828,13 @@
                 <!-- Project 2 -->
                 <div class="project-card" data-category="small">
                     <div class="project-image">
-                        <img src="img/companies/mootiis.jpg" alt="Mootiis Professional Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/mootiis.jpg" alt="Mootiis Professional Services" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Small Business</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">Professional Services Automation</h3>
@@ -861,11 +861,11 @@
                             <span class="project-tag">Cloud IT</span>
                             <span class="project-tag">Marketing</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="contact.html" class="project-button" style="flex: 1; min-width: 140px;">Contact Us →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="contact.html" class="project-button button-flex">Contact Us →</a>
+                            <button class="project-button read-more-btn button-flex" onclick="toggleReadMore(this)">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details hidden">
                             <h4>Project Overview</h4>
                             <p>A growing consulting firm needed to streamline their operations and reduce manual administrative work. The client was spending 60% of their time on non-billable tasks and needed a comprehensive digital solution.</p>
                             
@@ -889,13 +889,13 @@
                 <!-- Project 3 -->
                 <div class="project-card" data-category="enterprise">
                     <div class="project-image">
-                        <img src="img/companies/engitech (4).jpg" alt="Engitech Enterprise Cloud Migration" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/engitech (4).jpg" alt="Engitech Enterprise Cloud Migration" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Enterprise</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">Enterprise Cloud Migration</h3>
@@ -923,11 +923,11 @@
                             <span class="project-tag">Security</span>
                             <span class="project-tag">Infrastructure</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="https://unchainacademy.u-ko.co.za/" target="_blank" rel="noopener noreferrer" class="project-button" style="flex: 1; min-width: 140px;">Visit Website →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="https://unchainacademy.u-ko.co.za/" target="_blank" rel="noopener noreferrer" class="project-button button-flex">Visit Website →</a>
+                            <button class="project-button read-more-btn button-flex" onclick="toggleReadMore(this)">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details hidden">
                             <h4>Project Overview</h4>
                             <p>Engitech, a leading engineering solutions provider, needed to modernize their legacy infrastructure to support rapid growth and improve operational efficiency. The challenge involved migrating mission-critical systems while maintaining 24/7 availability.</p>
                             
@@ -951,13 +951,13 @@
                 <!-- Project 4 -->
                 <div class="project-card" data-category="medium">
                     <div class="project-image">
-                        <img src="img/companies/shellycare.png" alt="ShellyCare Healthcare Practice" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/shellycare.png" alt="ShellyCare Healthcare Practice" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Medium Business</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">Healthcare Practice Digitization</h3>
@@ -984,11 +984,11 @@
                             <span class="project-tag">Compliance</span>
                             <span class="project-tag">Automation</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="contact.html" class="project-button" style="flex: 1; min-width: 140px;">Contact Us →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="contact.html" class="project-button" class="button-flex">Contact Us →</a>
+                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" class="button-flex">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details" class="hidden">
                             <h4>Project Overview</h4>
                             <p>A medium-sized healthcare practice was struggling with manual patient management, scheduling conflicts, and compliance reporting. They needed a comprehensive digital solution to improve patient care and operational efficiency.</p>
                             
@@ -1012,13 +1012,13 @@
                 <!-- Project 5 -->
                 <div class="project-card" data-category="small">
                     <div class="project-image">
-                        <img src="img/companies/graphic-5.jpg" alt="Restaurant Chain Optimization" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/graphic-5.jpg" alt="Restaurant Chain Optimization" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Small Business</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">Restaurant Chain Optimization</h3>
@@ -1045,11 +1045,11 @@
                             <span class="project-tag">Inventory</span>
                             <span class="project-tag">Marketing</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="contact.html" class="project-button" style="flex: 1; min-width: 140px;">Contact Us →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="contact.html" class="project-button" class="button-flex">Contact Us →</a>
+                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" class="button-flex">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details" class="hidden">
                             <h4>Project Overview</h4>
                             <p>A growing restaurant chain with 5 locations needed to streamline operations, reduce food waste, and improve customer experience. They were losing revenue due to inconsistent inventory management and lack of digital ordering options.</p>
                             
@@ -1073,13 +1073,13 @@
                 <!-- Project 6 -->
                 <div class="project-card" data-category="enterprise">
                     <div class="project-image">
-                        <img src="img/companies/aurora.tif" alt="Aurora Manufacturing Intelligence" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem;">
+                        <img src="img/companies/aurora.tif" alt="Aurora Manufacturing Intelligence" class="project-img">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
                             <div class="project-category">Enterprise</div>
                             <div class="project-logo">
-                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-img-sm">
                             </div>
                         </div>
                         <h3 class="project-title">Manufacturing Intelligence Platform</h3>
@@ -1106,11 +1106,11 @@
                             <span class="project-tag">Predictive Analytics</span>
                             <span class="project-tag">Supply Chain</span>
                         </div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="https://aurora-studio.co.za/" target="_blank" rel="noopener noreferrer" class="project-button" style="flex: 1; min-width: 140px;">Visit Website →</a>
-                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" style="flex: 1; min-width: 140px;">Read More →</button>
+                        <div class="button-row">
+                            <a href="https://aurora-studio.co.za/" target="_blank" rel="noopener noreferrer" class="project-button" class="button-flex">Visit Website →</a>
+                            <button class="project-button read-more-btn" onclick="toggleReadMore(this)" class="button-flex">Read More →</button>
                         </div>
-                        <div class="project-details" style="display: none;">
+                        <div class="project-details" class="hidden">
                             <h4>Project Overview</h4>
                             <p>A large manufacturing company with multiple production facilities needed to modernize their operations with IoT sensors, predictive analytics, and automated quality control to reduce downtime and improve efficiency.</p>
                             
@@ -1179,11 +1179,11 @@
         <div class="footer-container">
             <div class="footer-logo">
                 <div class="footer-logo-icon">
-                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+                    <img src="img/logo/clouduko.jpg" alt="Cloud UKO" class="logo-image">
                 </div>
                 <div>
-                    <div style="font-size: 1.5rem; font-weight: bold; color: white;">Cloud UKO</div>
-                    <div style="font-size: 0.75rem; color: #9ca3af;">United Knowledge Operations</div>
+                    <div class="company-name">Cloud UKO</div>
+                    <div class="company-tagline">United Knowledge Operations</div>
                 </div>
             </div>
             
