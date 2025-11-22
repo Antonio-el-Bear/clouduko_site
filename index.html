@@ -273,7 +273,8 @@ BODY SECTION - MAIN WEBSITE CONTENT
                         <li><span class="check">✓</span> 24/7 Support</li>
                     </ul>
                     
-                    <!-- Package call-to-action button -->
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-small')">View Details</button>
                     <a href="contact.html?package=small" class="package-button" onclick="selectPackage('Small Business')">Get Started</a>
                 </div>
 
@@ -314,7 +315,8 @@ BODY SECTION - MAIN WEBSITE CONTENT
                         <li><span class="check">✓</span> Priority Support</li>
                     </ul>
                     
-                    <!-- Package call-to-action button -->
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-medium')">View Details</button>
                     <a href="contact.html?package=medium" class="package-button" onclick="selectPackage('Medium Business')">Get Started</a>
                 </div>
 
@@ -361,7 +363,8 @@ BODY SECTION - MAIN WEBSITE CONTENT
                         <li><span class="check">✓</span> White-glove Support</li>
                     </ul>
                     
-                    <!-- Package call-to-action button -->
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-enterprise')">View Details</button>
                     <a href="contact.html?package=enterprise" class="package-button" onclick="selectPackage('Enterprise')">Contact Sales</a>
                 </div>
             </div>
@@ -653,6 +656,263 @@ BODY SECTION - MAIN WEBSITE CONTENT
             animatedElements.forEach(el => {
                 observer.observe(el);
             });
+        });
+    </script>
+
+    <!-- PACKAGE MODALS -->
+    <!-- SMALL BUSINESS DETAILS MODAL -->
+    <div id="details-small" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-small')">&times;</span>
+
+            <h2>Small Business Package – Details</h2>
+            <p>Perfect for freelancers, startups, and boutiques establishing a professional digital foundation.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Cloud IT Foundation:</strong> Google/Microsoft email setup, secure cloud storage, daily backups, device security.</li>
+                <li><strong>Smart Automation Tools:</strong> WhatsApp/Gmail/Airtable automation, bookings, invoicing, financial reporting.</li>
+                <li><strong>Foundational Marketing:</strong> Google Business setup, social media optimization, starter content calendar.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Consistent digital presence, reduced workload, 20+ hours/week saved.</p>
+
+            <a href="contact.html?package=small" class="popup-contact-btn">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- MEDIUM BUSINESS DETAILS MODAL -->
+    <div id="details-medium" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-medium')">&times;</span>
+
+            <h2>Medium Business Package – Details</h2>
+            <p>Ideal for SMEs and agencies seeking unified operations and integrated growth.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Advanced Cloud IT:</strong> Multi-user access, cybersecurity, monitoring, audits.</li>
+                <li><strong>Intelligent Automation:</strong> Invoicing, expense tracking, HR & admin workflows, dashboards.</li>
+                <li><strong>Data-Driven Marketing:</strong> Full marketing funnel, CRM-linked campaigns, AI scheduling and analytics.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Unified growth engine, reduced overhead, faster decision-making.</p>
+
+            <a href="contact.html?package=medium" class="popup-contact-btn">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- ENTERPRISE DETAILS MODAL -->
+    <div id="details-enterprise" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-enterprise')">&times;</span>
+
+            <h2>Enterprise Package – Details</h2>
+            <p>High-performance automation and predictive analytics for large organizations.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Enterprise Cloud IT:</strong> Hybrid/private cloud, encrypted systems, monitoring, governance.</li>
+                <li><strong>AI-Driven Automation:</strong> ERP/CRM integration, forecasting, automated decisioning.</li>
+                <li><strong>Predictive Marketing & Analytics:</strong> Revenue-linked campaigns, SEO, omnichannel AI engagement.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Real-time metrics, automated operations, multi-million rand savings.</p>
+
+            <a href="contact.html?package=enterprise" class="popup-contact-btn">Contact Us</a>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+            margin: 5% auto;
+            padding: 2.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-content h3 {
+            color: #f1f5f9;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-content p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content ul {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-content ul li strong {
+            color: #10b981;
+        }
+
+        .close {
+            color: #94a3b8;
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #10b981;
+            transform: scale(1.2);
+        }
+
+        .popup-contact-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .popup-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .package-button-secondary {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .package-button-secondary:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                padding: 2rem;
+                width: 95%;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .close {
+                top: 1rem;
+                right: 1rem;
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
