@@ -173,6 +173,23 @@ body {
     width: 80%;           /* Expand to 80% of link width */
 }
 
+/* Phone icon link styling */
+.phone-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem !important;
+}
+
+.phone-link:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.phone-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
 /*
 ==========================================
 5. GET STARTED BUTTON
