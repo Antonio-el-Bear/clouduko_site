@@ -101,26 +101,6 @@ BODY SECTION - MAIN WEBSITE CONTENT
 
     <!--
     ==========================================
-    WHATSAPP CONTACT BUTTON
-    ==========================================
-    Floating WhatsApp button positioned in bottom-right corner.
-    Provides direct contact via WhatsApp for instant communication.
-    ==========================================
-    -->
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/27617914022?text=Hi%20Cloud%20UKO!%20I'm%20interested%20in%20your%20digital%20transformation%20services." 
-       id="whatsapp-btn" 
-       title="Chat with us on WhatsApp" 
-       target="_blank" 
-       rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-        </svg>
-        <span class="whatsapp-text">WhatsApp</span>
-    </a>
-
-    <!--
-    ==========================================
     HERO SECTION
     ==========================================
     Main landing section with company name, tagline, and call-to-action.
@@ -239,8 +219,14 @@ BODY SECTION - MAIN WEBSITE CONTENT
                 </p>
             </div>
 
+            <!-- Carousel navigation -->
+            <div class="carousel-nav">
+                <button class="carousel-btn prev" onclick="rotateCarousel(-1)">&lt;</button>
+                <button class="carousel-btn next" onclick="rotateCarousel(1)">&gt;</button>
+            </div>
+
             <!-- Packages grid layout -->
-            <div class="packages-grid">
+            <div class="packages-grid" id="packages-carousel">
                 <!-- Small Business Package -->
                 <div class="package-card">
                     <!-- Package icon -->
@@ -369,7 +355,137 @@ BODY SECTION - MAIN WEBSITE CONTENT
                     
                     <!-- Package call-to-action buttons -->
                     <button class="package-button-secondary" onclick="openModal('details-enterprise')">View Details</button>
-                    <a href="contact.html?package=enterprise" class="package-button" onclick="selectPackage('Enterprise')">Contact Sales</a>
+                    <a href="contact.html?package=enterprise" class="package-button" onclick="selectPackage('Enterprise')">Get Started</a>
+                </div>
+
+                <!-- Accounting & Administration Package -->
+                <div class="package-card">
+                    <!-- Package icon -->
+                    <div class="package-icon">
+                        <!-- Calculator icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <line x1="8" y1="6" x2="16" y2="6"/>
+                            <line x1="8" y1="10" x2="16" y2="10"/>
+                            <line x1="8" y1="14" x2="12" y2="14"/>
+                            <line x1="8" y1="18" x2="12" y2="18"/>
+                            <rect x="14" y="14" width="2" height="5"/>
+                        </svg>
+                    </div>
+                    <!-- Package name -->
+                    <h3 class="package-name">Accounting & Administration</h3>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        Comprehensive financial management and administrative automation solutions
+                    </p>
+                    <!-- Package pricing -->
+                    <div class="package-price">R 35,000</div>
+                    <p class="package-upkeep">Setup cost + R 8,500/mo</p>
+                    
+                    <!-- Package benefits badges -->
+                    <div class="package-badges">
+                        <span class="package-badge badge-roi">680% ROI</span>
+                        <span class="package-badge badge-savings">R 420K Savings</span>
+                    </div>
+                    
+                    <!-- Package features list -->
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Automated Bookkeeping</li>
+                        <li><span class="check">✓</span> Invoice & Expense Management</li>
+                        <li><span class="check">✓</span> Payroll Processing</li>
+                        <li><span class="check">✓</span> Tax Compliance Tools</li>
+                        <li><span class="check">✓</span> Financial Reporting</li>
+                        <li><span class="check">✓</span> Document Management</li>
+                    </ul>
+                    
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-accounting')">View Details</button>
+                    <a href="contact.html?package=accounting" class="package-button" onclick="selectPackage('Accounting & Administration')">Get Started</a>
+                </div>
+
+                <!-- Agricultural Package -->
+                <div class="package-card">
+                    <!-- Package icon -->
+                    <div class="package-icon">
+                        <!-- Plant icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22c5-5 5-12 5-12s-7 0-12 5c0 0 0 7 7 7z"/>
+                            <path d="M12 22c-5-5-5-12-5-12s7 0 12 5c0 0 0 7-7 7z"/>
+                            <path d="M12 10v12"/>
+                        </svg>
+                    </div>
+                    <!-- Package name -->
+                    <h3 class="package-name">Agricultural</h3>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        Farm management, supply chain tracking, and agricultural data analytics
+                    </p>
+                    <!-- Package pricing -->
+                    <div class="package-price">R 52,000</div>
+                    <p class="package-upkeep">Setup cost + R 13,800/mo</p>
+                    
+                    <!-- Package benefits badges -->
+                    <div class="package-badges">
+                        <span class="package-badge badge-roi">720% ROI</span>
+                        <span class="package-badge badge-savings">R 650K Savings</span>
+                    </div>
+                    
+                    <!-- Package features list -->
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Crop & Livestock Tracking</li>
+                        <li><span class="check">✓</span> Inventory Management</li>
+                        <li><span class="check">✓</span> Weather & Analytics Integration</li>
+                        <li><span class="check">✓</span> Supply Chain Management</li>
+                        <li><span class="check">✓</span> Farm Equipment Monitoring</li>
+                        <li><span class="check">✓</span> Marketplace Integration</li>
+                    </ul>
+                    
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-agricultural')">View Details</button>
+                    <a href="contact.html?package=agricultural" class="package-button" onclick="selectPackage('Agricultural')">Get Started</a>
+                </div>
+
+                <!-- ERP System Package -->
+                <div class="package-card featured">
+                    <!-- Package icon -->
+                    <div class="package-icon">
+                        <!-- Layers icon SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <!-- Package name -->
+                    <h3 class="package-name">ERP System</h3>
+                    <!-- Package description -->
+                    <p class="package-description">
+                        Complete enterprise resource planning for unified business operations
+                    </p>
+                    <!-- Package pricing -->
+                    <div class="package-price">R 125,000</div>
+                    <p class="package-upkeep">Setup cost + R 24,500/mo</p>
+                    
+                    <!-- Package benefits badges -->
+                    <div class="package-badges">
+                        <span class="package-badge badge-roi">800% ROI</span>
+                        <span class="package-badge badge-savings">R 1.2M+ Savings</span>
+                    </div>
+                    
+                    <!-- Package features list -->
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Integrated Financial Management</li>
+                        <li><span class="check">✓</span> Supply Chain & Procurement</li>
+                        <li><span class="check">✓</span> Human Resources Management</li>
+                        <li><span class="check">✓</span> Project Management Tools</li>
+                        <li><span class="check">✓</span> Manufacturing & Production</li>
+                        <li><span class="check">✓</span> Business Intelligence & Reports</li>
+                        <li><span class="check">✓</span> Custom Integrations</li>
+                    </ul>
+                    
+                    <!-- Package call-to-action buttons -->
+                    <button class="package-button-secondary" onclick="openModal('details-erp')">View Details</button>
+                    <a href="contact.html?package=erp" class="package-button" onclick="selectPackage('ERP System')">Get Started</a>
                 </div>
             </div>
         </div>
@@ -637,6 +753,45 @@ BODY SECTION - MAIN WEBSITE CONTENT
         }
 
         /**
+         * Carousel Rotation Function
+         * Rotates through the package cards
+         * @param {number} direction - 1 for next, -1 for previous
+         */
+        let currentIndex = 0;
+        const cardsPerView = 3;
+
+        function rotateCarousel(direction) {
+            const carousel = document.getElementById('packages-carousel');
+            const cards = carousel.querySelectorAll('.package-card');
+            const totalCards = cards.length;
+            
+            currentIndex += direction;
+            
+            // Loop around
+            if (currentIndex < 0) {
+                currentIndex = totalCards - cardsPerView;
+            } else if (currentIndex > totalCards - cardsPerView) {
+                currentIndex = 0;
+            }
+            
+            // Hide all cards
+            cards.forEach((card, index) => {
+                card.style.display = 'none';
+            });
+            
+            // Show current 3 cards
+            for (let i = 0; i < cardsPerView; i++) {
+                const cardIndex = (currentIndex + i) % totalCards;
+                cards[cardIndex].style.display = 'block';
+            }
+        }
+
+        // Initialize carousel on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            rotateCarousel(0); // Show first 3 cards
+        });
+
+        /**
          * Animation on Scroll Observer
          * Triggers animations when elements come into view
          */
@@ -682,7 +837,10 @@ BODY SECTION - MAIN WEBSITE CONTENT
             <h3>Outcome:</h3>
             <p>Consistent digital presence, reduced workload, 20+ hours/week saved.</p>
 
-            <a href="contact.html?package=small" class="popup-contact-btn">Contact Us</a>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=small" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=small&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
         </div>
     </div>
 
@@ -704,7 +862,10 @@ BODY SECTION - MAIN WEBSITE CONTENT
             <h3>Outcome:</h3>
             <p>Unified growth engine, reduced overhead, faster decision-making.</p>
 
-            <a href="contact.html?package=medium" class="popup-contact-btn">Contact Us</a>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=medium" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=medium&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
         </div>
     </div>
 
@@ -726,7 +887,104 @@ BODY SECTION - MAIN WEBSITE CONTENT
             <h3>Outcome:</h3>
             <p>Real-time metrics, automated operations, multi-million rand savings.</p>
 
-            <a href="contact.html?package=enterprise" class="popup-contact-btn">Contact Us</a>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=enterprise" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=enterprise&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCOUNTING & ADMINISTRATION DETAILS MODAL -->
+    <div id="details-accounting" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-accounting')">&times;</span>
+
+            <h2>Accounting & Administration Package – Details</h2>
+            <p>Comprehensive financial management and administrative automation solutions for streamlined operations.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Automated Bookkeeping:</strong> Real-time transaction recording, bank reconciliation, and financial categorization.</li>
+                <li><strong>Invoice & Expense Management:</strong> Automated invoicing, expense tracking, receipt scanning, and payment reminders.</li>
+                <li><strong>Payroll Processing:</strong> Employee management, automated salary calculations, tax deductions, and compliance.</li>
+                <li><strong>Tax Compliance Tools:</strong> VAT/GST tracking, tax report generation, and regulatory compliance monitoring.</li>
+                <li><strong>Financial Reporting:</strong> Real-time dashboards, P&L statements, balance sheets, and cash flow analysis.</li>
+                <li><strong>Document Management:</strong> Digital filing system, document scanning, and secure cloud storage.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Reduced accounting costs by 85%, improved financial accuracy, real-time financial visibility, and compliance peace of mind.</p>
+
+            <h3>Benefits:</h3>
+            <p><strong>680% ROI</strong> – Save R 420,000 annually through automated processes and reduced manual errors.</p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=accounting" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=accounting&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGRICULTURAL DETAILS MODAL -->
+    <div id="details-agricultural" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-agricultural')">&times;</span>
+
+            <h2>Agricultural Package – Details</h2>
+            <p>Advanced farm management, supply chain tracking, and agricultural data analytics for modern farming operations.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Crop & Livestock Tracking:</strong> Digital records for planting cycles, growth monitoring, animal health tracking, and yield predictions.</li>
+                <li><strong>Inventory Management:</strong> Seed, fertilizer, equipment, and harvest inventory with automated reorder alerts.</li>
+                <li><strong>Weather & Analytics Integration:</strong> Real-time weather data, historical patterns, irrigation optimization, and climate insights.</li>
+                <li><strong>Supply Chain Management:</strong> Farm-to-market tracking, logistics coordination, and distribution management.</li>
+                <li><strong>Farm Equipment Monitoring:</strong> Asset tracking, maintenance scheduling, fuel consumption monitoring, and utilization reports.</li>
+                <li><strong>Marketplace Integration:</strong> Direct buyer connections, pricing analytics, and online sales channels.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Increased crop yields by 25%, reduced waste by 40%, improved supply chain efficiency, and data-driven farming decisions.</p>
+
+            <h3>Benefits:</h3>
+            <p><strong>720% ROI</strong> – Save R 650,000 annually through optimized operations and improved market access.</p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=agricultural" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=agricultural&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ERP SYSTEM DETAILS MODAL -->
+    <div id="details-erp" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('details-erp')">&times;</span>
+
+            <h2>ERP System Package – Details</h2>
+            <p>Complete enterprise resource planning solution for unified business operations across all departments.</p>
+
+            <h3>Included:</h3>
+            <ul>
+                <li><strong>Integrated Financial Management:</strong> Multi-currency accounting, consolidated reporting, budgeting, and financial forecasting.</li>
+                <li><strong>Supply Chain & Procurement:</strong> Vendor management, purchase orders, inventory optimization, and demand planning.</li>
+                <li><strong>Human Resources Management:</strong> Employee lifecycle, recruitment, performance management, training, and attendance tracking.</li>
+                <li><strong>Project Management Tools:</strong> Resource allocation, milestone tracking, time sheets, and project profitability analysis.</li>
+                <li><strong>Manufacturing & Production:</strong> Production planning, quality control, shop floor management, and bill of materials.</li>
+                <li><strong>Business Intelligence & Reports:</strong> Real-time KPI dashboards, predictive analytics, and custom report generation.</li>
+                <li><strong>Custom Integrations:</strong> API connections to existing systems, third-party tools, and legacy software.</li>
+            </ul>
+
+            <h3>Outcome:</h3>
+            <p>Complete business visibility, eliminated data silos, automated cross-department workflows, and enterprise-wide efficiency.</p>
+
+            <h3>Benefits:</h3>
+            <p><strong>800% ROI</strong> – Save over R 1.2 million annually through unified operations and intelligent automation.</p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="contact.html?package=erp" class="popup-contact-btn">Contact Us</a>
+                <a href="contact.html?package=erp&demo=true" class="popup-demo-btn">Request Demo</a>
+            </div>
         </div>
     </div>
 
@@ -845,6 +1103,25 @@ BODY SECTION - MAIN WEBSITE CONTENT
             box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
         }
 
+        .popup-demo-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .popup-demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
         .package-button-secondary {
             width: 100%;
             padding: 1rem;
@@ -891,22 +1168,28 @@ BODY SECTION - MAIN WEBSITE CONTENT
     <script>
         // Modal Functions
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
+        // Close modal when clicking outside of modal content
+        window.addEventListener('click', function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-        }
+        });
 
         // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
